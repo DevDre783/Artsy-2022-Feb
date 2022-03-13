@@ -1,0 +1,274 @@
+* {
+    box-sizing: border-box;
+}
+
+.profile__pic {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.profile__pic:hover {
+    transform: scale(7.1);
+}
+
+body {
+    margin: 0;
+    letter-spacing: normal;
+    line-height: 18px;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+.outer__container {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    flex-direction: column;
+    margin-top: 6%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top__container {
+    margin-top: 10%;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile__pic {
+    /* transform: translateX(-600px); */
+    transform: scale(7.0);
+}
+
+.profile__pic__container {
+    width: 25%;
+}
+
+.change__profile__pic {
+    background-color: black;
+    border-radius: 35px;
+    color: rgb(0, 207, 0);
+    transform: scale(1.5);
+    margin-left: 15%;
+}
+
+
+
+.change__profile__pic:hover {
+    cursor: pointer;
+    color: rgb(0, 255, 0);
+}
+
+.user__info__display {
+    width: 25%;
+    /* margin-right: -2%; */
+}
+
+.mid__container {
+    margin-top: 3%;
+    width: 100%;
+    /* margin-left: 36%; */
+}
+
+.mid__container p {
+    text-align: center;
+    /* margin-left: 12%; */
+    font-size: 14pt;
+    margin-top: 10%;
+}
+
+.learn__stocks {
+    /* width: 30%; */
+    text-align: left;
+    /* margin-left: 2%; */
+    text-decoration: none;
+    color: rgb(0, 140, 221);
+}
+
+.learn__stocks:hover {
+    text-decoration: underline;
+}
+
+.learn__more {
+    margin-bottom: 10%;
+}
+
+.icon {
+    transform: scale(1.2);
+    color: rgb(0, 139, 0);
+}
+
+.owned__stock__percentage {
+    margin-bottom: 2.5%;
+}
+
+.owned__stock__percentage button {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 12pt;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: none;
+}
+
+.owned__stock__percentage button:hover {
+    color: white;
+    cursor: default;
+    border: none;
+    background-color: rgb(0, 167, 0);
+}
+
+.industry__category {
+    margin-left: 5.5%;
+    margin-top: 2%;
+}
+
+.industry__category button {
+    background-color: white;
+    padding: 15px;
+    transform: scale(1.1);
+    margin-right: 3.5%;
+    border: none;
+    border-radius: 35px;
+}
+
+.edit__profile__container {
+    width: 25%;
+}
+
+.edit__profile__btn {
+    /* background: none; */
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    width: 50%;
+    padding: 10px;
+    /* border: none; */
+    border-radius: 35px;
+}
+
+.edit__profile__btn:hover {
+    transform: scale(0.97);
+    background-color: rgba(44, 44, 44, 0.788);
+    color: black;
+}
+
+.industry__category button:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.788);
+}
+
+.industry__category img {
+    border: 1px black solid;
+    border-radius: 50%;
+}
+
+.lower__container {
+    margin-top: 17%;
+    margin-left: 6%;
+    text-align: left;
+    width: 100%;
+}
+
+.showMoreLessbtn {
+    background: none;
+    border: none;
+    color: rgb(20, 122, 255);
+}
+
+
+
+/* Edit form modal */
+
+.form__container {
+    margin-right: 15%;
+}
+
+#change__theme__container {
+    text-decoration: underline;
+}
+
+.color__palette {
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 2%; */
+    justify-content: space-around;
+    align-items: center;
+}
+.color1__container {
+    padding: 25px;
+}
+
+.color2__container {
+    padding: 25px;
+}
+
+.color3__container {
+    padding: 25px;
+}
+
+.color4__container {
+    padding: 25px;
+}
+
+.color5__container {
+    padding: 25px;
+}
+
+.color1, .color2, .color3, .color4, .color5 {
+    transform: scale(4.5);
+}
+
+#change__theme__container #theme__color__btn1 {
+    background-color: rgb(30, 30, 218);
+}
+
+#change__theme__container #theme__color__btn2 {
+    background-color: rgb(0, 167, 0);
+}
+
+#change__theme__container #theme__color__btn3 {
+    background-color: rgb(223, 22, 206);
+}
+
+#change__theme__container #theme__color__btn4 {
+    background-color: rgb(235, 16, 16);
+}
+
+#change__theme__container #theme__color__btn5 {
+    background-color: rgb(251, 255, 0);
+}
+
+
+
+/* HOVER EFFECTS COLOR BUTTONS */
+
+#change__theme__container #theme__color__btn1:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn2:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn3:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn4:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn5:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
