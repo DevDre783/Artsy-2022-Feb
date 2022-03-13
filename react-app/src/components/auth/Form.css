@@ -1,0 +1,104 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: white !important;
+}
+
+.background__container {
+    filter: brightness(80%);
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url("https://i.pinimg.com/originals/db/1c/1a/db1c1ad07b38e8feab26ab31c2961b75.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form__container a {
+    text-decoration: none;
+    font-size: 14pt;
+    color: rgb(255, 255, 255);
+}
+
+.form__container a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.form__container p {
+    font-size: 14pt;
+    color: rgb(161, 161, 161);
+}
+
+.form__container input {
+    text-align: left;
+    font-size: 12pt;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: 18px;
+    /* padding-left: 75px;
+    padding-right: 75px; */
+    width: 350px;
+    margin-bottom: 16%;
+    background-color: rgb(66, 63, 63);
+    color: white;
+}
+
+.form__container input:focus {
+    background-color: rgb(66, 63, 63);
+}
+
+.form__container input:active {
+    background-color: rgb(66, 63, 63);
+}
+
+.form__container {
+    background-color: rgba(0, 0, 0, 0.746);
+    border-radius: 5px;
+    height: 750px;
+    width: 20%;
+    display: flex;
+    margin-left: 38%;
+    margin-top: 11.5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.form__top__text {
+    font-size: 16pt;
+    padding-bottom: 5%;
+    color: white;
+}
+
+.signin__form__btn {
+    cursor: pointer;
+    color: white;
+    font-size: 14pt;
+    border: 1px rgba(114, 114, 114, 0.863) solid;
+    border-radius: 5px;
+    background-color: rgb(131, 131, 131);
+    padding: 10px;
+    width: 350px;
+    margin-bottom: 6%;
+}
+
+.signin__form__btn:hover {
+    background-color: rgb(110, 110, 110);
+}
