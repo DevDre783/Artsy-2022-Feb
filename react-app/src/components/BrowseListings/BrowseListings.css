@@ -1,0 +1,12 @@
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+.title {
+    margin-top: 10%;
+    margin-left: 4%;
+}
