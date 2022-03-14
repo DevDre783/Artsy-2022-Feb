@@ -2,7 +2,7 @@ import React from 'react';
 import './BrowseListings.css';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { getListings } from '../../store/listing';
 
 function BrowseListings() {
@@ -24,7 +24,9 @@ function BrowseListings() {
                 {listings?.map(listing => (
                     <div className='listing__container' key={listing?.id}>
                         <h1>{listing?.title}</h1>
-                        <img src={listing.url} className="individual__listing"></img>
+                        <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing?.id}`}>
+                            <img src={listing?.url} className="individual__listing"></img>
+                        </Link>
                     </div>
                 ))}
             </div>
