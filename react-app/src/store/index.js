@@ -5,7 +5,7 @@ import main_listings from './listing'
 
 const rootReducer = combineReducers({
   session,
-  main_listings
+  main_listings,
 });
 
 
