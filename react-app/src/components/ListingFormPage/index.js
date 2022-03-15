@@ -11,9 +11,8 @@ function ListingFormPage () {
     const history = useHistory('');
     // Art Listings
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    // Images
     const [url, setUrl] = useState('');
+    const [description, setDescription] = useState('');
     // Errors
     const [errors, setErrors] = useState([]);
 
@@ -27,31 +26,13 @@ function ListingFormPage () {
 
         setErrors(validationErrors);
 
-    }, [title, description, url]);
+    }, [title, url, description]);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        dispatch(postListing(title, url, description))
 
-        const payload = {
-            listings: {
-                title,
-                description,
-                url
-            }
-        };
-
-        let createdListing;
-
-        try {
-            createdListing = await dispatch(postListing(payload));
-        } catch (error) {
-            throw new Error("This did not work!!")
-        }
-
-        if (createdListing) {
-            history.push(`/browse`);
-        }
     };
 
     return (
@@ -75,7 +56,7 @@ function ListingFormPage () {
                         />
                         Image<input
                             type='string'
-                            placeholder="image url"
+                            placeholder="Image url"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                         />

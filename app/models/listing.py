@@ -17,7 +17,7 @@ class Listing(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
-            "url": self.url,
             "title": self.title,
+            "url": self.url,
             "description": self.description
         }

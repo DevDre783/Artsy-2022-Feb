@@ -16,21 +16,26 @@ function BrowseListings() {
     }, [])
 
     return (
-        <div className='page__container'>
+        <>
+            <div className='heading__image'>
+                <img className='image' src="https://wallpaperaccess.com/full/4847463.jpg"></img>
+            </div>
             <div>
-                <h1 className='title'>LISTINGS</h1>
+                <h1 className='header'>Collection</h1>
             </div>
-            <div className='listings__container'>
-                {listings?.map(listing => (
-                    <div className='listing__container' key={listing?.id}>
-                        <h1>{listing?.title}</h1>
-                        <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing?.id}`}>
-                            <img src={listing?.url} className="individual__listing"></img>
-                        </Link>
-                    </div>
-                ))}
+            <div className='page__container'>
+                <div className='listings__container'>
+                    {listings?.map(listing => (
+                        <div className='listing__container' key={listing?.id}>
+                            <h1 className='listing__title'>{listing?.title}</h1>
+                            <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing?.id}`}>
+                                <img src={listing?.url} className="individual__listing"></img>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
