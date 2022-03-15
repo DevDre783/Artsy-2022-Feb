@@ -28,7 +28,7 @@ function BrowseListings() {
                     {listings?.map(listing => (
                         <div className='listing__container' key={listing?.id}>
                             <h1 className='listing__title'>{listing?.title}</h1>
-                            <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing?.id}`}>
+                            <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing.id}`}>
                                 <img src={listing?.url} className="individual__listing"></img>
                             </Link>
                         </div>
