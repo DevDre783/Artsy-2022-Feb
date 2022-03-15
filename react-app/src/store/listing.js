@@ -21,11 +21,12 @@ export const getListings = () => async dispatch => {
     }
 }
 
-export const postListing = (title, url, description) => async dispatch => {
+export const postListing = (user_id, title, url, description) => async dispatch => {
     const response = await fetch(`/api/browse/listing-form`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
+            user_id,
             title,
             url,
             description
@@ -62,8 +63,10 @@ const listingsReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                [action.listing.id]: new_listing,
-                all_listings: [new_listing, ...state.all_listings]
+                [action.listing.id]: {
+                    ...newState[action.listing.id],
+                    ...action.listing
+                }
             }
         }
         default: return state;

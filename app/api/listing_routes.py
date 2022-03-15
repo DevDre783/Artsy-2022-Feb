@@ -17,6 +17,19 @@ def load_listings():
 @listing_routes.route('/listing-form', methods=['POST'])
 @login_required
 def create_listing():
-    object = request.data
+    user_id = request.json['user_id']
+    title = request.json['title']
+    url = request.json['url']
+    description = request.json['description']
 
-    print(object)
+    newListing = Listing(
+        user_id=user_id,
+        title=title,
+        url=url,
+        description=description
+    )
+
+    db.session.add(newListing)
+    db.session.commit()
+
+    return jsonify(newListing.to_dict())
