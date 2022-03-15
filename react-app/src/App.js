@@ -9,6 +9,7 @@ import ProfileDisplay from './components/ProfilePage';
 import Footer from './components/Footer';
 import BrowseListings from './components/BrowseListings'
 import ListingFormPage from './components/ListingFormPage';
+import ListingDetailsPage from './components/ListingDetailsPage'
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
@@ -47,6 +48,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/listing-form" exact={true}>
           <ListingFormPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/browse/:listingId" exact={true}>
+          <ListingDetailsPage />
         </ProtectedRoute>
         {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

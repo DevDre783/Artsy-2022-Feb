@@ -15,6 +15,8 @@ function ListingFormPage () {
     const [description, setDescription] = useState('');
     // Errors
     const [errors, setErrors] = useState([]);
+    const user = useSelector(state => state?.session?.user);
+    const user_id = user.id
 
     useEffect(() => {
         const validationErrors = [];
@@ -31,8 +33,8 @@ function ListingFormPage () {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(postListing(title, url, description))
-
+        dispatch(postListing(user_id, title, url, description))
+        history.push("/browse")
     };
 
     return (
