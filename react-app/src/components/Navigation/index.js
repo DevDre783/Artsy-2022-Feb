@@ -5,6 +5,7 @@ import { useState } from "react";
 import * as sessionActions from '../../store/session';
 import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaPalette } from "react-icons/fa";
 
 
 
@@ -33,7 +34,7 @@ function Navbar({ isLoaded }) {
       {user ? null :
       <>
         <div className='logo__container'>
-          <Link to={`/`}><h1>Artsy</h1></Link>
+          <Link to={`/`}><h1>Artsy</h1></Link><FaPalette style={{color: "red"}}/>
         </div>
         <div className=''>
 
@@ -51,7 +52,7 @@ function Navbar({ isLoaded }) {
       {!user ? null :
         <>
           <div className='logo__container'>
-            <Link to={`/browse`}><h1>Artsy</h1></Link>
+            <Link to={`/browse`}><h1>Artsy</h1></Link><FaPalette className='palette__icon' style={{color: "red"}}/>
           </div>
           <div className=''>
             <div>
@@ -67,7 +68,7 @@ function Navbar({ isLoaded }) {
         </>
       }
         <div className='profile__icon'>
-         {!user ? null : <div className='my__lists__tab'><NavLink to={`/listing-form`}>Post your Masterpiece</NavLink></div>}
+         {!user ? null : <div className='my__lists__tab'><NavLink to={`/listing-form`} style={{color: "red"}}>Share Your Art</NavLink></div>}
          {!user ? null :<ProfileButton />}
         </div>
     </nav>

@@ -17,12 +17,6 @@
     justify-content: left;
 }
 
-.image__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .main__info > input {
     width: 250px;
     padding: 3px;
@@ -36,16 +30,10 @@
     justify-content: left;
 }
 
-.amenities__container {
-    padding: 20px;
-    display: inline-flex;
-    flex-direction: column;
-}
-
-.hostForm__errors {
+.listingForm__errors {
     display: inline-block;
     /* list-style: none; */
-    background-color: rgba(75, 74, 74, 0.151);
+    /* background-color: rgba(75, 74, 74, 0.151); */
     color: rgb(223, 54, 54);
     font-weight: bold;
     position: absolute;

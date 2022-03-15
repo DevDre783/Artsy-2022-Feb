@@ -1,0 +1,38 @@
+.comments__container {
+    margin-bottom: 10%;
+}
+
+.details__container {
+    /* margin-left: 21%; */
+}
+
+.listing__content {
+    margin-top: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.comment_submission_box {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.comments__container {
+    margin-left: 31%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.comments__heading {
+    margin-left: 31%;
+}

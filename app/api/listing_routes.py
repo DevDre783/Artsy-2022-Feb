@@ -33,3 +33,11 @@ def create_listing():
     db.session.commit()
 
     return jsonify(newListing.to_dict())
+
+
+@listing_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def get_one_listing(id):
+    oneListing = Listing.query.filter(Listing.id == id).first()
+    print("FROM ONE LISTING API", oneListing.id, id)
+    return oneListing.to_dict()

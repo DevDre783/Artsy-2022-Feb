@@ -1,10 +1,18 @@
 const LOAD = "listings/LOAD";
+const LOAD_ONE = 'listings/LOAD_ONE';
 const ADD_ONE = 'listings/ADD_ONE';
 
 const loadListings = listings => ({
     type: LOAD,
     listings
 })
+
+const loadOne = (listing) => {
+    return {
+        type: LOAD_ONE,
+        listing
+    }
+};
 
 const addNewListing = listing => ({
     type: ADD_ONE,
@@ -20,6 +28,14 @@ export const getListings = () => async dispatch => {
         return listings
     }
 }
+
+export const getOneListing = (id) => async (dispatch) => {
+    const response = await fetch(`/api/browse/${id}`);
+    if (response.ok) {
+        const listing = await response.json();
+        dispatch(loadOne(listing));
+    }
+};
 
 export const postListing = (user_id, title, url, description) => async dispatch => {
     const response = await fetch(`/api/browse/listing-form`, {
@@ -54,13 +70,30 @@ const listingsReducer = (state = initialState, action) => {
                 main_listings: [...action.listings]
             }
         }
-        case ADD_ONE: {
-            const new_listing = {
-                id: action.listing.id,
-                title: action.listing.title,
-                url: action.listing.url,
-                description: action.listing.description
+        case LOAD_ONE: {
+            if (state[action.listing.id]) {
+                const newState = {
+                    ...state,
+                    [action.listing.id]: action.listing
+                };
+
+                return newState
             }
+            return {
+                ...state,
+                [action.listing.id]: {
+                    ...state[action.listing.id],
+                    ...action.listing
+                }
+            }
+        }
+        case ADD_ONE: {
+            // const new_listing = {
+            //     id: action.listing.id,
+            //     title: action.listing.title,
+            //     url: action.listing.url,
+            //     description: action.listing.description
+            // }
             return {
                 ...state,
                 [action.listing.id]: {

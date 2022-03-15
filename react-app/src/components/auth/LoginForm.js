@@ -94,7 +94,7 @@ const LoginForm = () => {
           </div>
             <button onClick={handleClick} className='signin__form__btn' type='submit'>Sign In</button>
         </form>
-        <p>New to Rallyflix? <Link to={'/sign-up'}>Sign up now.</Link></p>
+        <p>New to Artsy? <Link to={'/sign-up'}>Sign up now.</Link></p>
       </div>
     </>
   );

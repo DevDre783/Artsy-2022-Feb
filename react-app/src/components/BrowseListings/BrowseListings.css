@@ -14,6 +14,7 @@ body {
 .page__container {
     height: 100%;
     margin-left: 35%;
+    margin-bottom: 8%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,6 +30,11 @@ body {
 
 .individual__listing {
     width: 30vw;
+    margin-bottom: 10%;
+}
+
+.individual__listing:hover {
+    box-shadow: 0 0 5px 5px rgb(116, 116, 116);
 }
 
 .image {
