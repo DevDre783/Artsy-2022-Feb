@@ -1,8 +1,9 @@
 .footer__container {
     border-top: 1px solid rgba(82, 82, 82, 0.5);
+    box-shadow: 2px 5px 5px 5px rgba(36, 36, 36, 0.5);
     height: 6%;
     color: white;
-    background-color: rgba(88, 88, 88, 0.493);
+    background-color: rgba(156, 156, 156, 0.493);
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -23,7 +24,7 @@
 
 .github__icon {
     margin-right: 40%;
-    color: rgb(110, 110, 110);
+    color: rgb(146, 146, 146);
     text-decoration: none;
     transform: scale(2.5);
 }
@@ -33,7 +34,7 @@
 }
 
 .linkedIn__icon {
-    color: rgb(110, 110, 110);
+    color: rgb(146, 146, 146);
     text-decoration: none;
     transform: scale(2.5);
 }

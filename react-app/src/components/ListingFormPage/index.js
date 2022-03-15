@@ -39,13 +39,6 @@ function ListingFormPage () {
 
     return (
         <>
-            <div>
-                <ul className="hostForm__errors">
-                    {errors.map(error => (
-                        <li key={error}>{error}</li>
-                        ))}
-                </ul>
-            </div>
             <div className="form__container">
                 <form className="the__form" onSubmit={handleSubmit}>
                     <div className="main__info">
@@ -81,6 +74,13 @@ function ListingFormPage () {
                         </Link>
                     </div>
                 </form>
+            </div>
+            <div style={{marginLeft: "38.5%"}}>
+                <ul className="listingForm__errors">
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                        ))}
+                </ul>
             </div>
         </>
     )
