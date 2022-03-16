@@ -1,7 +1,8 @@
 const LOAD = "listings/LOAD";
 const LOAD_ONE = 'listings/LOAD_ONE';
 const ADD_ONE = 'listings/ADD_ONE';
-const EDIT_LISTING = 'listings/EDIT_LISTING'
+const EDIT_LISTING = 'listings/EDIT_LISTING';
+const DELETE_LISTING = "listings/DELETE_LIST";
 
 const loadListings = listings => ({
     type: LOAD,
@@ -24,6 +25,13 @@ const editListing = (listing) => ({
     type: EDIT_LISTING,
     listing
 })
+
+const deleteListing = (listing) => {
+    return {
+        type: DELETE_LISTING,
+        listing
+    }
+}
 
 export const getListings = () => async dispatch => {
     const response = await fetch(`/api/browse/`)
@@ -80,6 +88,19 @@ export const editingListing = (id, title, user_id) => async dispatch => {
     }
 }
 
+export const deleteListings = (id) => async (dispatch) => {
+    const response = await fetch(`/api/browse/${+id}`, {
+        method: 'DELETE'
+    })
+
+    if(response.ok) {
+        const deleted_listing = await response.json()
+
+        dispatch(deleteListing(deleted_listing))
+        return deleted_listing
+    }
+}
+
 const initialState = {
 
 }
@@ -122,6 +143,10 @@ const listingsReducer = (state = initialState, action) => {
         }
         case EDIT_LISTING: {
             newState = action.listing
+        }
+        case DELETE_LISTING: {
+            delete newState[action.listing.id];
+            return newState
         }
 
         default: return state;
