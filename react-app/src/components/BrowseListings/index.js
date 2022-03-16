@@ -7,7 +7,7 @@ import { getListings } from '../../store/listing';
 
 function BrowseListings() {
     const dispatch = useDispatch();
-    const listings = useSelector(state => state?.main_listings?.main_listings)
+    const listings = Object.values(useSelector(state => state?.main_listings))
     console.log("LISTINGS", listings)
 
 

@@ -9,7 +9,7 @@ import './ListingDetails.css'
 function ListingDetailsPage() {
     const { listingId } = useParams();
     const user = useSelector(state => state.session.user)
-    const oneListing = useSelector(state => state?.main_listings?.main_listings[listingId - 1]);
+    const oneListing = useSelector(state => state?.main_listings[listingId]);
     const [editListingTitle, setEditListingTitle] = useState(oneListing?.title)
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
@@ -49,11 +49,10 @@ function ListingDetailsPage() {
         history.push(`/browse`)
     }
 
-    // const handleDeleteListing = async () => {
-    //     await dispatch(deleteListings(listingId))
-
-    //     history.push('/browse')
-    // }
+    const handleDeleteListing = async () => {
+        history.push('/browse')
+        await dispatch(deleteListings(oneListing.id))
+    }
 
     return (
         <div className='details__container'>
@@ -62,7 +61,7 @@ function ListingDetailsPage() {
                     <img src={oneListing.url}></img>
                     <h2>{oneListing.title}</h2><h3>Owned By: {user.username}</h3>
                     {user.id == oneListing.user_id ? <button onClick={handleEditListingForm}>edit</button> : null}
-                    {user.id == oneListing.user_id ? <button>delete</button> : null}
+                    {user.id == oneListing.user_id ? <button onClick={handleDeleteListing}>delete</button> : null}
                     {showEditForm && (
                         <>
                             <div className='edit__listing'>
@@ -86,7 +85,7 @@ function ListingDetailsPage() {
                     )}
                     <p>{oneListing.description}</p>
                 </div>
-                : null}
+            : null}
             <div className='comment_submission_box'>
                 <p>Leave a Comment</p>
                 <textarea>
