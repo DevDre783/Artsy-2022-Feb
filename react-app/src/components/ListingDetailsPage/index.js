@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
-import { editingListing, getOneListing, postListing } from '../../store/listing';
+import { deleteListings, editingListing, getListings, getOneListing, postListing } from '../../store/listing';
 import './ListingDetails.css'
 
 
@@ -48,6 +48,12 @@ function ListingDetailsPage() {
         }
         history.push(`/browse`)
     }
+
+    // const handleDeleteListing = async () => {
+    //     await dispatch(deleteListings(listingId))
+
+    //     history.push('/browse')
+    // }
 
     return (
         <div className='details__container'>

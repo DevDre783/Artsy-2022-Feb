@@ -57,3 +57,15 @@ def edit_listings(id):
     db.session.commit()
 
     return currListing.to_dict()
+
+
+@listing_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_listing(id):
+
+    currListing = Listing.query.get(id)
+
+    db.session.delete(currListing)
+    db.session.commit()
+
+    return currListing.to_dict()

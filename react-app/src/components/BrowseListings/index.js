@@ -13,7 +13,7 @@ function BrowseListings() {
 
     useEffect(() => {
         dispatch(getListings(listings))
-    }, [])
+    }, [dispatch])
 
     return (
         <>
