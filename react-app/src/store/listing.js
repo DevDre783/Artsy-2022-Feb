@@ -110,11 +110,18 @@ const listingsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case LOAD: {
-            return {
-                ...state,
-                main_listings: [...action.listings]
-            }
+            newState = {}
+            action.listings.forEach((listing) => {
+                newState[listing.id] = listing
+            })
+            return { ...newState }
         }
+        // case LOAD: {
+        //     return {
+        //         ...state,
+        //         main_listings: [...action.listings]
+        //     }
+        // }
         case LOAD_ONE: {
             if (state[action.listing.id]) {
                 const newState = {
