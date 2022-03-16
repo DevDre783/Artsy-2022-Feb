@@ -14,6 +14,14 @@ def load_listings():
     return jsonify([listing.to_dict() for listing in listings])
 
 
+@listing_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def get_one_listing(id):
+    oneListing = Listing.query.filter(Listing.id == id).first()
+    print("FROM ONE LISTING API", oneListing.id, id)
+    return oneListing.to_dict()
+
+
 @listing_routes.route('/listing-form', methods=['POST'])
 @login_required
 def create_listing():
@@ -35,9 +43,17 @@ def create_listing():
     return jsonify(newListing.to_dict())
 
 
-@listing_routes.route('/<int:id>', methods=['GET'])
+@listing_routes.route('/<int:id>', methods=['PUT'])
 @login_required
-def get_one_listing(id):
-    oneListing = Listing.query.filter(Listing.id == id).first()
-    print("FROM ONE LISTING API", oneListing.id, id)
-    return oneListing.to_dict()
+def edit_listings(id):
+    print("FROM PUT !", id)
+    object = request.json
+    print("FROM PUT !!", object)
+    title = request.json["title"]
+    print("FROM PUT !!!", title)
+
+    currListing = Listing.query.get(id)
+    currListing.title = title
+    db.session.commit()
+
+    return currListing.to_dict()
