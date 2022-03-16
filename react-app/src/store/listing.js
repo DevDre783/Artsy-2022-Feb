@@ -1,6 +1,7 @@
 const LOAD = "listings/LOAD";
 const LOAD_ONE = 'listings/LOAD_ONE';
 const ADD_ONE = 'listings/ADD_ONE';
+const EDIT_LISTING = 'listings/EDIT_LISTING'
 
 const loadListings = listings => ({
     type: LOAD,
@@ -16,6 +17,11 @@ const loadOne = (listing) => {
 
 const addNewListing = listing => ({
     type: ADD_ONE,
+    listing
+})
+
+const editListing = (listing) => ({
+    type: EDIT_LISTING,
     listing
 })
 
@@ -40,7 +46,7 @@ export const getOneListing = (id) => async (dispatch) => {
 export const postListing = (user_id, title, url, description) => async dispatch => {
     const response = await fetch(`/api/browse/listing-form`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             user_id,
             title,
@@ -53,6 +59,24 @@ export const postListing = (user_id, title, url, description) => async dispatch 
         const listing = await response.json();
         dispatch(addNewListing(listing));
         return listing;
+    }
+}
+
+export const editingListing = (id, title, user_id) => async dispatch => {
+    console.log("FROM EDIT THUNK", typeof (+id))
+    const response = await fetch(`/api/browse/${+id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            title,
+            user_id
+        })
+    });
+
+    if (response.ok) {
+        const edited_listing = await response.json();
+        dispatch(editListing(edited_listing));
+        return edited_listing;
     }
 }
 
@@ -88,12 +112,6 @@ const listingsReducer = (state = initialState, action) => {
             }
         }
         case ADD_ONE: {
-            // const new_listing = {
-            //     id: action.listing.id,
-            //     title: action.listing.title,
-            //     url: action.listing.url,
-            //     description: action.listing.description
-            // }
             return {
                 ...state,
                 [action.listing.id]: {
@@ -102,6 +120,10 @@ const listingsReducer = (state = initialState, action) => {
                 }
             }
         }
+        case EDIT_LISTING: {
+            newState = action.listing
+        }
+
         default: return state;
     }
 }

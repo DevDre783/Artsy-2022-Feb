@@ -68,7 +68,7 @@ function Navbar({ isLoaded }) {
         </>
       }
         <div className='profile__icon'>
-         {!user ? null : <div className='my__lists__tab'><NavLink to={`/listing-form`} style={{color: "red"}}>Share</NavLink></div>}
+         {!user ? null : <div className='my__lists__tab'><NavLink to={`/listing-form`} style={{color: "red", marginRight: "50px"}}>Share</NavLink></div>}
          {!user ? null :<ProfileButton />}
         </div>
     </nav>
