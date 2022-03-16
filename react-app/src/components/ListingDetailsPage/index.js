@@ -32,7 +32,7 @@ function ListingDetailsPage() {
             <div className='comment_submission_box'>
                 <p>Leave a Comment</p>
                 <textarea>
-
+                    
                 </textarea>
                 <button>Submit</button>
                 <button>Clear</button>
