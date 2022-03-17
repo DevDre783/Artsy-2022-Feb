@@ -21,7 +21,7 @@ function BrowseListings() {
                 <img className='image' src="https://wallpaperaccess.com/full/4847463.jpg"></img>
             </div>
             <div>
-                <h1 className='header'>Collection</h1>
+                <h1 className='header'>Gallery</h1>
             </div>
             <div className='page__container'>
                 <div className='listings__container'>
