@@ -47,6 +47,7 @@ function ListingDetailsPage() {
             setShowEditForm(false)
         }
         history.push(`/browse`)
+        dispatch(getListings(listingId))
     }
 
     const handleDeleteListing = async () => {
