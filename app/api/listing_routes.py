@@ -19,6 +19,7 @@ def load_listings():
 def get_one_listing(id):
     oneListing = Listing.query.filter(Listing.id == id).first()
     print("FROM ONE LISTING API", oneListing.id, id)
+    
     return oneListing.to_dict()
 
 

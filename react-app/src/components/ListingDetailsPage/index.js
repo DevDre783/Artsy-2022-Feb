@@ -10,10 +10,12 @@ import './ListingDetails.css'
 function ListingDetailsPage() {
     const { listingId } = useParams();
     const user = useSelector(state => state.session.user)
+    const user_id = user.id
     const oneListing = useSelector(state => state?.main_listings[listingId]);
     const [editListingTitle, setEditListingTitle] = useState(oneListing?.title)
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
+    const [body, setBody] = useState('');
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -21,6 +23,12 @@ function ListingDetailsPage() {
     useEffect(() => {
         dispatch(getOneListing(listingId))
     }, [dispatch, listingId])
+
+    // const handleSubmitComment = async (e) => {
+    //     e.preventDefault();
+    //     dispatch(postComment(user_id, listingId, body))
+    //     // history.push(`/browse/${listingId}`)
+    // };
 
     const handleEditListingForm = (e) => {
         e.preventDefault()
@@ -88,18 +96,10 @@ function ListingDetailsPage() {
                     <p>{oneListing.description}</p>
                 </div>
             : null}
-            <div className='comment_submission_box'>
-                <p>Leave a Comment</p>
-                <textarea>
-
-                </textarea>
-                <button>Submit</button>
-                <button>Clear</button>
-            </div>
             <div>
                 <p className='comments__heading'>Comments</p>
                 <div className='comments__container' style={{ border: "2px black solid", padding: "25px", width: "40%", height: "60%" }}>
-                    <LoadedComments listingId={oneListing.id}/>
+                    <LoadedComments listingId={oneListing.id} userId={user.id}/>
                 </div>
             </div>
         </div>
