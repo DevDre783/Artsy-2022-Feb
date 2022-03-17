@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { deleteListings, editingListing, getListings, getOneListing, postListing } from '../../store/listing';
+import LoadedComments from '../LoadedComments';
 import './ListingDetails.css'
 
 
@@ -98,7 +99,7 @@ function ListingDetailsPage() {
             <div>
                 <p className='comments__heading'>Comments</p>
                 <div className='comments__container' style={{ border: "2px black solid", padding: "25px", width: "40%", height: "60%" }}>
-                    <h1>COMMENTS GO HERE FROM DB</h1>
+                    <LoadedComments listingId={oneListing.id}/>
                 </div>
             </div>
         </div>
