@@ -81,7 +81,7 @@ function LoadedComments({ listingId, userId }) {
                                         <textarea
                                             type="text"
                                             name="edit-comment"
-                                            value={editCommentBody}
+                                            value={oneComment.body}
                                             onChange={(e) => setEditCommentBody(e.target.value)}
                                             placeholder="Edit comment..."
                                         />

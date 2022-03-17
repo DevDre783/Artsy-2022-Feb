@@ -69,9 +69,10 @@ function ListingDetailsPage() {
             {oneListing.id == listingId ?
                 <div className='listing__content'>
                     <img src={oneListing.url}></img>
-                    <h2>{oneListing.title}</h2><h3>Owned By: {user.username}</h3>
+                    <h2>{oneListing.title}</h2>
                     {user.id == oneListing.user_id ? <button onClick={handleEditListingForm}>edit</button> : null}
                     {user.id == oneListing.user_id ? <button onClick={handleDeleteListing}>delete</button> : null}
+
                     {showEditForm && (
                         <>
                             <div className='edit__listing'>
@@ -93,11 +94,12 @@ function ListingDetailsPage() {
                             </div>
                         </>
                     )}
+                    <h3>Owned By: {user.username}</h3>
                     <p>{oneListing.description}</p>
                 </div>
             : null}
             <div>
-                <p className='comments__heading'>Comments</p>
+                <h1 style={{marginTop: "3%", marginBottom: "1%"}} className='comments__heading'>Comments</h1>
                 <div className='comments__container' style={{ border: "2px black solid", padding: "25px", width: "40%", height: "60%" }}>
                     <LoadedComments listingId={oneListing.id} userId={user.id}/>
                 </div>
