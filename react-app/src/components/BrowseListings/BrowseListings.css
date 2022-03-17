@@ -7,12 +7,15 @@ body {
 }
 
 .header {
-    margin-top: 3%;
+    color: rgb(45, 20, 78);
+    margin-top: 6%;
     margin-left: 25%;
-
+    font-size: 36pt;
+    font-family: 'Finger Paint', cursive;
 }
 
 .page__container {
+    font-family: 'Finger Paint', cursive;
     height: 100%;
     margin-left: 35%;
     margin-bottom: 8%;
