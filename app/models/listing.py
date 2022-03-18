@@ -19,5 +19,6 @@ class Listing(db.Model):
             "user_id": self.user_id,
             "title": self.title,
             "url": self.url,
-            "description": self.description
+            "description": self.description,
+            "username": self.user_info.username
         }
