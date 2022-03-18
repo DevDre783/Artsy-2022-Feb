@@ -107,7 +107,7 @@ function ListingDetailsPage() {
             <div>
                 <h1 style={{marginTop: "3%", marginBottom: "1%"}} className='comments__heading'>Comments</h1>
                 <div className='comments__container' style={{ border: "2px black solid", padding: "25px", width: "40%", height: "60%" }}>
-                    <LoadedComments listingId={oneListing.id} userId={user.id} />
+                    <LoadedComments listingId={oneListing.id} userId={user.id} oneListing={oneListing}/>
                 </div>
             </div>
         </div>
