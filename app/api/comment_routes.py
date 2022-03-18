@@ -35,28 +35,29 @@ def create_comment():
     return jsonify(newComment.to_dict())
 
 
-# @comment_routes.route('/<int:id>', methods=['PUT'])
+@comment_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_comment(id):
+    print("FROM PUT !", id)
+    object = request.json
+    print("FROM PUT !!", object)
+    body = request.json["body"]
+    print("FROM PUT !!!", body)
+
+    currComment = Comment.query.get(id)
+    currComment.body = body
+    db.session.commit()
+
+    return jsonify(currComment.to_dict())
+
+
+# @comment_routes.route('/<int:id>', methods=['DELETE'])
 # @login_required
-# def edit_comment(id):
-#     print("FROM PUT !", id)
-#     object = request.json
-#     print("FROM PUT !!", object)
-#     body = request.json["body"]
-#     print("FROM PUT !!!", body)
+# def delete_comment(id):
 
-#     currComment = Comment.query.get(id)
-#     currComment.body = body
-#     db.session.commit()
+#     currcomment = Comment.query.get(id)
 
-#     return currComment.to_dict()
-
-# @listing_routes.route('/<int:id>', methods=['DELETE'])
-# @login_required
-# def delete_listing(id):
-
-#     currListing = Listing.query.get(id)
-
-#     db.session.delete(currListing)
+#     db.session.delete(currComment)
 #     db.session.commit()
 
 #     return currListing.to_dict()

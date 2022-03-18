@@ -6,7 +6,7 @@ import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { editingComment, getListingComments, postComment } from '../../store/comment';
 
 
-function LoadedComments({ listingId, userId }) {
+function LoadedComments({ listingId, oneListing }) {
     const dispatch = useDispatch();
 
     const user = useSelector(state => state.session.user);
@@ -14,19 +14,23 @@ function LoadedComments({ listingId, userId }) {
 
     const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
-    const [editCommentBody, setEditCommentBody] = useState('')
+    const [editCommentBody, setEditCommentBody] = useState("comments original body goes here")
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
+
+    const commentIds = comments.map(comment => {
+        return comment.id
+    })
 
     useEffect(() => {
         const validationErrors = [];
 
-        if (body.length < 15) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
+        if (body.length === 0) validationErrors.push("Cannot submit an empty comment");
 
         setErrors(validationErrors);
 
         dispatch(getListingComments(listingId))
-        dispatch(getAllUsers())
+        // dispatch(getAllUsers())
     }, [dispatch, body])
 
 
@@ -37,25 +41,35 @@ function LoadedComments({ listingId, userId }) {
         // history.push(`/browse/${listingId}`)
     };
 
-    const handleEditCommentForm = (e) => {
-        e.preventDefault()
-        // dispatch(editingComment(body))
+    const handleEditCommentForm = () => {
+
+        console.log(commentIds)
 
         if (!showEditForm) {
             setShowEditForm(true)
-            dispatch(editingComment(body))
         } else {
-            setShowEditForm(false)
+            // setShowEditForm(false)
         }
+    }
+
+    const handleCancelEditCommentForm = () => {
+        setShowEditForm(false)
+    }
+
+    const handleClearComment = () => {
+        setBody("")
     }
 
     const handleEditComment = async (e) => {
         e.preventDefault()
 
-        // dispatch(editingComment(listingId, editCommentBody))
+        // dispatch(editingComment(comments[oneListing.id].listing_id, editCommentBody))
+        // console.log("FROM HANDLE EDIT", comments[oneListing.id].listing_id)
         // dispatch(getListingComments(listingId))
-        // setShowEditForm(false)
+        setShowEditForm(false)
     }
+
+
 
     return (
         <>
@@ -70,6 +84,12 @@ function LoadedComments({ listingId, userId }) {
                     value={body}
                     onChange={e => setBody(e.target.value)}
                 />
+                        <button onClick={handleSubmitComment}
+                            disabled={errors.length > 0}
+                            type="submit"
+                        >Submit
+                        </button>
+                        <button onClick={handleClearComment}>Clear</button>
                 {showEditForm && (
                     <>
                         <div className='edit__comment'>
@@ -85,27 +105,21 @@ function LoadedComments({ listingId, userId }) {
                                     placeholder="Edit comment..."
                                 />
                                 <button type="submit" onClick={handleEditComment}>Submit</button>
+                                <button type="submit" onClick={handleCancelEditCommentForm}>Cancel</button>
                             </div>
                         </div>
-                        <div className='profile__errors'>
+                        {/* <div className='profile__errors'>
                             {errors.map((error) => (
-                                <li style={{ color: "white" }} key={error}>{error}</li>
+                                <li style={{ color: "red" }} key={error}>{error}</li>
                             ))}
-                        </div>
+                        </div> */}
                     </>
                 )}
-                <button onClick={handleSubmitComment}
-                    // disabled={errors.length > 0}
-                    type="submit"
-                >Submit
-                </button>
-                <button>Clear</button>
             </div>
             <div>
                 {comments.map(comment => (
                     <div>
                         <h3>{comment.username}</h3>
-                        {/* <h1>{allUsers?.find(user => user?.id === comment?.user_id)?.username}</h1> */}
                         <div className='' style={{ border: "2px black solid", padding: "25px", width: "100%", height: "60%" }}>
                             <p key={comment.id}>{comment.body}</p>
                         </div>
@@ -131,7 +145,13 @@ function LoadedComments({ listingId, userId }) {
                                 </div>
                             </>
                         )} */}
-                        {comment.user_id == user.id ? <button style={{ marginBottom: "5%", marginTop: "1%" }} onClick={handleEditCommentForm}>edit</button> : null}
+                        {comment.user_id == user.id ? <button
+                            style={{ marginBottom: "5%", marginTop: "1%" }}
+                            onClick={ () => {
+                                // setShowEditForm(true)
+                                handleEditCommentForm()
+                                setEditCommentBody(comment.body)
+                            }}>edit</button> : null}
                         {comment.user_id == user.id ? <button>delete</button> : null}
                     </div>
                 ))}
