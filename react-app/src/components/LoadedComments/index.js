@@ -47,18 +47,10 @@ function LoadedComments({ listingId, userId }) {
 
     const handleEditComment = async (e) => {
         e.preventDefault()
-        const editComment_errors = [];
 
-        if (editCommentBody.length <= 0) editComment_errors.push(<p style={{ color: "red" }}>Field must not be empty.</p>)
-        if (editCommentBody.length <= 50) editComment_errors.push(<p style={{ color: "red" }}>Comment must be longer than 50 characters</p>)
-
-        if (editComment_errors.length > 0) {
-            setErrors(editComment_errors);
-        }
-        else {
-            dispatch(editingComment(listingId, editCommentBody))
-            setShowEditForm(false)
-        }
+        dispatch(editingComment(listingId, editCommentBody))
+        dispatch(getListingComments(listingId))
+        setShowEditForm(false)
     }
 
     return (
@@ -81,11 +73,11 @@ function LoadedComments({ listingId, userId }) {
                                         <textarea
                                             type="text"
                                             name="edit-comment"
-                                            value={oneComment.body}
+                                            value={editCommentBody}
                                             onChange={(e) => setEditCommentBody(e.target.value)}
                                             placeholder="Edit comment..."
                                         />
-                                        <button type="submit" onClick={handleEditComment} disabled={errors.length > 0}>Submit</button>
+                                        <button type="submit" onClick={handleEditComment}>Submit</button>
                                     </div>
                                 </div>
                                 <div className='profile__errors'>
@@ -109,6 +101,7 @@ function LoadedComments({ listingId, userId }) {
                         <div className='' style={{ border: "2px black solid", padding: "25px", width: "100%", height: "60%" }}>
                             <p key={comment.id}>{comment.body}</p>
                         </div>
+
                         {/* {showEditForm && (
                             <>
                                 <div className='edit__comment'>
