@@ -46,14 +46,12 @@ export const postComment = (user_id, listing_id, body) => async dispatch => {
     }
 }
 
-export const editingComment = (id, user_id, listing_id, body) => async dispatch => {
+export const editingComment = (id, body) => async dispatch => {
     console.log("FROM EDIT THUNK", typeof (+id))
     const response = await fetch(`/api/comments/${+id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            user_id,
-            listing_id,
             body
         })
     });
