@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import main_listings from './listing'
 import comments from './comment'
+import user from './user'
 
 const rootReducer = combineReducers({
   session,
   main_listings,
-  comments
+  comments,
+  user
 });
 
 
