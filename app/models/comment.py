@@ -6,7 +6,7 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    listing_id = db.Column(db.Integer, db.ForeignKey("listings.id"), nullable=False)
+    listing_id = db.Column(db.Integer, db.ForeignKey("listings.id", ondelete='CASCADE'), nullable=False)
     body = db.Column(db.Text, nullable=False)
 
     user_info = db.relationship("User", back_populates="comment_info")

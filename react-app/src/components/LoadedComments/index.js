@@ -12,10 +12,6 @@ function LoadedComments({ listingId, userId }) {
     const user = useSelector(state => state.session.user);
     const user_id = user.id
 
-    const allUsers = useSelector(state => state.list)
-    // const oneComment = useSelector(state => state?.comments[listingId]);
-    console.log("FROM LOADED COMMENTS....", allUsers)
-
     const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
     const [editCommentBody, setEditCommentBody] = useState('')
@@ -43,9 +39,11 @@ function LoadedComments({ listingId, userId }) {
 
     const handleEditCommentForm = (e) => {
         e.preventDefault()
+        // dispatch(editingComment(body))
 
         if (!showEditForm) {
             setShowEditForm(true)
+            dispatch(editingComment(body))
         } else {
             setShowEditForm(false)
         }

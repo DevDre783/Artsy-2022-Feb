@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Listing, User, db
+from app.models import Listing, User, Comment, db
 
 listing_routes = Blueprint('listings', __name__)
 
@@ -19,7 +19,7 @@ def load_listings():
 def get_one_listing(id):
     oneListing = Listing.query.filter(Listing.id == id).first()
     print("FROM ONE LISTING API", oneListing.id, id)
-    
+
     return oneListing.to_dict()
 
 
