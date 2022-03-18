@@ -35,20 +35,20 @@ def create_comment():
     return jsonify(newComment.to_dict())
 
 
-@comment_routes.route('/<int:id>', methods=['PUT'])
-@login_required
-def edit_comment(id):
-    print("FROM PUT !", id)
-    object = request.json
-    print("FROM PUT !!", object)
-    body = request.json["body"]
-    print("FROM PUT !!!", body)
+# @comment_routes.route('/<int:id>', methods=['PUT'])
+# @login_required
+# def edit_comment(id):
+#     print("FROM PUT !", id)
+#     object = request.json
+#     print("FROM PUT !!", object)
+#     body = request.json["body"]
+#     print("FROM PUT !!!", body)
 
-    currComment = Comment.query.get(id)
-    currComment.body = body
-    db.session.commit()
+#     currComment = Comment.query.get(id)
+#     currComment.body = body
+#     db.session.commit()
 
-    return currComment.to_dict()
+#     return currComment.to_dict()
 
 # @listing_routes.route('/<int:id>', methods=['DELETE'])
 # @login_required

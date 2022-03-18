@@ -1,16 +1,21 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllUsers } from "../../store/user"
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { editingComment, getListingComments, postComment } from '../../store/comment';
 
 
 function LoadedComments({ listingId, userId }) {
     const dispatch = useDispatch();
+
     const user = useSelector(state => state.session.user);
     const user_id = user.id
-    const oneComment = useSelector(state => state?.comments[listingId]);
-    // console.log("FROM LOADED COMMENTS", oneComment)
+
+    // const allUsers = useSelector(state => state.user.list)
+    // const oneComment = useSelector(state => state?.comments[listingId]);
+    // console.log("FROM LOADED COMMENTS....", allUsers)
+
     const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
     const [editCommentBody, setEditCommentBody] = useState('')
@@ -25,7 +30,8 @@ function LoadedComments({ listingId, userId }) {
         setErrors(validationErrors);
 
         dispatch(getListingComments(listingId))
-    }, [body])
+        dispatch(getAllUsers())
+    }, [dispatch, body])
 
 
     const handleSubmitComment = async (e) => {
@@ -48,9 +54,9 @@ function LoadedComments({ listingId, userId }) {
     const handleEditComment = async (e) => {
         e.preventDefault()
 
-        dispatch(editingComment(listingId, editCommentBody))
-        dispatch(getListingComments(listingId))
-        setShowEditForm(false)
+        // dispatch(editingComment(listingId, editCommentBody))
+        // dispatch(getListingComments(listingId))
+        // setShowEditForm(false)
     }
 
     return (
@@ -67,26 +73,29 @@ function LoadedComments({ listingId, userId }) {
                     onChange={e => setBody(e.target.value)}
                 />
                 {showEditForm && (
-                            <>
-                                <div className='edit__comment'>
-                                    <div className='edit__comment'>
-                                        <textarea
-                                            type="text"
-                                            name="edit-comment"
-                                            value={editCommentBody}
-                                            onChange={(e) => setEditCommentBody(e.target.value)}
-                                            placeholder="Edit comment..."
-                                        />
-                                        <button type="submit" onClick={handleEditComment}>Submit</button>
-                                    </div>
-                                </div>
-                                <div className='profile__errors'>
-                                    {errors.map((error) => (
-                                        <li style={{ color: "white" }} key={error}>{error}</li>
-                                    ))}
-                                </div>
-                            </>
-                        )}
+                    <>
+                        <div className='edit__comment'>
+                            <div className='edit__comment'>
+                                <textarea
+                                    style={{ resize: "none" }}
+                                    rows="6"
+                                    cols="70"
+                                    type="text"
+                                    name="edit-comment"
+                                    value={editCommentBody}
+                                    onChange={(e) => setEditCommentBody(e.target.value)}
+                                    placeholder="Edit comment..."
+                                />
+                                <button type="submit" onClick={handleEditComment}>Submit</button>
+                            </div>
+                        </div>
+                        <div className='profile__errors'>
+                            {errors.map((error) => (
+                                <li style={{ color: "white" }} key={error}>{error}</li>
+                            ))}
+                        </div>
+                    </>
+                )}
                 <button onClick={handleSubmitComment}
                     // disabled={errors.length > 0}
                     type="submit"
@@ -98,6 +107,7 @@ function LoadedComments({ listingId, userId }) {
                 {comments.map(comment => (
                     <div>
                         {comment.user_id == userId ? <h3>{user.username}</h3> : null}
+                        {/* <h1>{allUsers?.find(user => user?.id === comment?.user_id)?.username}</h1> */}
                         <div className='' style={{ border: "2px black solid", padding: "25px", width: "100%", height: "60%" }}>
                             <p key={comment.id}>{comment.body}</p>
                         </div>
@@ -123,7 +133,7 @@ function LoadedComments({ listingId, userId }) {
                                 </div>
                             </>
                         )} */}
-                        {comment.user_id == user.id ? <button style={{marginBottom: "5%", marginTop: "1%"}} onClick={handleEditCommentForm}>edit</button> : null}
+                        {comment.user_id == user.id ? <button style={{ marginBottom: "5%", marginTop: "1%" }} onClick={handleEditCommentForm}>edit</button> : null}
                         {comment.user_id == user.id ? <button>delete</button> : null}
                     </div>
                 ))}
