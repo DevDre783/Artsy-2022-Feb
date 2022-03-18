@@ -12,9 +12,9 @@ function LoadedComments({ listingId, userId }) {
     const user = useSelector(state => state.session.user);
     const user_id = user.id
 
-    // const allUsers = useSelector(state => state.user.list)
+    const allUsers = useSelector(state => state.list)
     // const oneComment = useSelector(state => state?.comments[listingId]);
-    // console.log("FROM LOADED COMMENTS....", allUsers)
+    console.log("FROM LOADED COMMENTS....", allUsers)
 
     const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
@@ -106,7 +106,7 @@ function LoadedComments({ listingId, userId }) {
             <div>
                 {comments.map(comment => (
                     <div>
-                        {comment.user_id == userId ? <h3>{user.username}</h3> : null}
+                        <h3>{comment.username}</h3>
                         {/* <h1>{allUsers?.find(user => user?.id === comment?.user_id)?.username}</h1> */}
                         <div className='' style={{ border: "2px black solid", padding: "25px", width: "100%", height: "60%" }}>
                             <p key={comment.id}>{comment.body}</p>

@@ -94,7 +94,7 @@ function ListingDetailsPage() {
                             </div>
                         </>
                     )}
-                    <h3>Owned By: {user.username}</h3>
+                    <h3>Owned By: {oneListing.username}</h3>
                     <p>{oneListing.description}</p>
                 </div>
             : null}
