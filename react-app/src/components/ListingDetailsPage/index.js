@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
+import { getListingComments } from '../../store/comment';
 import { deleteListings, editingListing, getListings, getOneListing, postListing } from '../../store/listing';
 import LoadedComments from '../LoadedComments';
 import './ListingDetails.css'
@@ -32,6 +33,7 @@ function ListingDetailsPage() {
 
     const handleEditListingForm = (e) => {
         e.preventDefault()
+        // dispatch(edit(listingId))
 
         if (!showEditForm) {
             setShowEditForm(true)
@@ -64,9 +66,13 @@ function ListingDetailsPage() {
         await dispatch(deleteListings(oneListing.id))
     }
 
+    if (!oneListing) {
+        return <Redirect to={`/browse/${listingId}`}/>
+    }
+
     return (
         <div className='details__container'>
-            {oneListing.id == listingId ?
+            {oneListing?.id == listingId ?
                 <div className='listing__content'>
                     <img src={oneListing.url}></img>
                     <h2>{oneListing.title}</h2>
@@ -101,7 +107,7 @@ function ListingDetailsPage() {
             <div>
                 <h1 style={{marginTop: "3%", marginBottom: "1%"}} className='comments__heading'>Comments</h1>
                 <div className='comments__container' style={{ border: "2px black solid", padding: "25px", width: "40%", height: "60%" }}>
-                    <LoadedComments listingId={oneListing.id} userId={user.id}/>
+                    <LoadedComments listingId={oneListing.id} userId={user.id} />
                 </div>
             </div>
         </div>

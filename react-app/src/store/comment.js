@@ -1,6 +1,6 @@
 const LOAD = "comments/LOAD";
 const ADD_ONE = 'comments/ADD_ONE';
-// const EDIT_COMMENT = 'comments/EDIT_COMMENT';
+const EDIT_COMMENT = 'comments/EDIT_COMMENT';
 
 
 const loadComments = comments => ({
@@ -13,10 +13,10 @@ const addNewComment = comment => ({
     comment
 })
 
-// const editComment = (comment) => ({
-//     type: EDIT_COMMENT,
-//     comment
-// })
+const editComment = (comment) => ({
+    type: EDIT_COMMENT,
+    comment
+})
 
 export const getListingComments = (id) => async dispatch => {
     const response = await fetch(`/api/comments/${id}`)
@@ -46,22 +46,22 @@ export const postComment = (user_id, listing_id, body) => async dispatch => {
     }
 }
 
-// export const editingComment = (id, body) => async dispatch => {
-//     console.log("FROM EDIT THUNK", typeof (+id))
-//     const response = await fetch(`/api/comments/${+id}`, {
-//         method: 'PUT',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({
-//             body
-//         })
-//     });
+export const editingComment = (id, body) => async dispatch => {
+    console.log("FROM EDIT THUNK", typeof (+id))
+    const response = await fetch(`/api/comments/${+id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            body
+        })
+    });
 
-//     if (response.ok) {
-//         const edited_comment = await response.json();
-//         dispatch(editComment(edited_comment));
-//         return edited_comment;
-//     }
-// }
+    if (response.ok) {
+        const edited_comment = await response.json();
+        dispatch(editComment(edited_comment));
+        return edited_comment;
+    }
+}
 
 const initialState = {
 
@@ -87,9 +87,9 @@ const commentsReducer = (state = initialState, action) => {
                 }
             }
         }
-        // case EDIT_COMMENT: {
-        //     newState = action.comment
-        // }
+        case EDIT_COMMENT: {
+            newState = action.comment
+        }
         // case DELETE_LISTING: {
         //     delete newState[action.listing.id];
         //     return newState
