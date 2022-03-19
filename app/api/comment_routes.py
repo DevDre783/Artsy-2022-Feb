@@ -35,16 +35,18 @@ def create_comment():
     return jsonify(newComment.to_dict())
 
 
-@comment_routes.route('/<int:id>', methods=['PUT'])
+@comment_routes.route('/edit', methods=['PUT'])
 @login_required
-def edit_comment(id):
-    print("FROM PUT !", id)
+def edit_comment():
+    # print("FROM PUT !", id)
     object = request.json
     print("FROM PUT !!", object)
     body = request.json["body"]
-    print("FROM PUT !!!", body)
+    commentId = request.json["commentId"]
+    print("FROM PUT !!!", commentId)
 
-    currComment = Comment.query.get(id)
+    currComment = Comment.query.get(commentId)
+    print("FROM EDIT API", currComment)
     currComment.body = body
     db.session.commit()
 

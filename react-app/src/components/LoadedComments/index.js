@@ -11,16 +11,19 @@ function LoadedComments({ listingId, oneListing }) {
 
     const user = useSelector(state => state.session.user);
     const user_id = user.id
+    const [commentId, setCommentId] = useState()
 
     const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
+    const commentIds = Object.keys(useSelector(state => state.comments))
+    // console.log("FROM LOADED COMMENTS", commentIds)
     const [editCommentBody, setEditCommentBody] = useState("comments original body goes here")
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
 
-    const commentIds = comments.map(comment => {
-        return comment.id
-    })
+    // const commentIds = comments.map(comment => {
+    //     return comment.id
+    // })
 
     useEffect(() => {
         const validationErrors = [];
@@ -43,13 +46,10 @@ function LoadedComments({ listingId, oneListing }) {
 
     const handleEditCommentForm = () => {
 
-        console.log(commentIds)
-
         if (!showEditForm) {
             setShowEditForm(true)
-        } else {
-            // setShowEditForm(false)
         }
+
     }
 
     const handleCancelEditCommentForm = () => {
@@ -63,9 +63,9 @@ function LoadedComments({ listingId, oneListing }) {
     const handleEditComment = async (e) => {
         e.preventDefault()
 
-        // dispatch(editingComment(comments[oneListing.id].listing_id, editCommentBody))
+        dispatch(editingComment(oneListing.id, commentId, editCommentBody))
         // console.log("FROM HANDLE EDIT", comments[oneListing.id].listing_id)
-        // dispatch(getListingComments(listingId))
+        dispatch(getListingComments(listingId))
         setShowEditForm(false)
     }
 
@@ -148,7 +148,7 @@ function LoadedComments({ listingId, oneListing }) {
                         {comment.user_id == user.id ? <button
                             style={{ marginBottom: "5%", marginTop: "1%" }}
                             onClick={ () => {
-                                // setShowEditForm(true)
+                                setCommentId(comment.id)
                                 handleEditCommentForm()
                                 setEditCommentBody(comment.body)
                             }}>edit</button> : null}
