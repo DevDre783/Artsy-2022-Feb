@@ -1,6 +1,7 @@
 const LOAD = "comments/LOAD";
 const ADD_ONE = 'comments/ADD_ONE';
 const EDIT_COMMENT = 'comments/EDIT_COMMENT';
+// const DELETE_COMMENT = 'comments/DELETE_COMMENT';
 
 
 const loadComments = comments => ({
@@ -17,6 +18,11 @@ const editComment = (comment) => ({
     type: EDIT_COMMENT,
     comment
 })
+
+// const delete_comment = (comment) => ({
+//     type: DELETE_COMMENT,
+//     comment
+// })
 
 export const getListingComments = (id) => async dispatch => {
     const response = await fetch(`/api/comments/${id}`)
@@ -65,6 +71,25 @@ export const editingComment = (id, commentId, body) => async dispatch => {
     }
 }
 
+// export const deleteComment = (commentId, body) => async (dispatch) => {
+//     console.log("DELETE COMMENT THUNK", commentId)
+//     const response = await fetch(`/api/comments/delete`, {
+//         method: 'DELETE',
+//         headers: {'Content-Type': 'application/json'},
+//         body: JSON.stringify({
+//             commentId,
+//             body
+//         })
+//     })
+//     if (response.ok) {
+//         const deleted_comment = await response.json();
+
+//         dispatch(delete_comment(deleted_comment));
+//         return deleted_comment
+//     }
+
+// }
+
 const initialState = {
 
 }
@@ -92,8 +117,8 @@ const commentsReducer = (state = initialState, action) => {
         case EDIT_COMMENT: {
             newState = action.comment
         }
-        // case DELETE_LISTING: {
-        //     delete newState[action.listing.id];
+        // case DELETE_COMMENT: {
+        //     delete newState[action.comment];
         //     return newState
         // }
 

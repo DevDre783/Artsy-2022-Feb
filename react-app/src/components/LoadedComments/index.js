@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from "../../store/user"
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
-import { editingComment, getListingComments, postComment } from '../../store/comment';
+import { deleteComment, editingComment, getListingComments, postComment } from '../../store/comment';
 
 
 function LoadedComments({ listingId, oneListing }) {
@@ -62,14 +62,18 @@ function LoadedComments({ listingId, oneListing }) {
 
     const handleEditComment = async (e) => {
         e.preventDefault()
-
+        console.log("FROM HANDLE EDIT", commentId)
         dispatch(editingComment(oneListing.id, commentId, editCommentBody))
         // console.log("FROM HANDLE EDIT", comments[oneListing.id].listing_id)
         dispatch(getListingComments(listingId))
         setShowEditForm(false)
     }
 
+    const handleDeleteComment = () => {
 
+        // dispatch(deleteComment(commentId, editCommentBody))
+        // console.log("FROM HANDLE DELETE", commentId)
+    }
 
     return (
         <>
@@ -152,7 +156,10 @@ function LoadedComments({ listingId, oneListing }) {
                                 handleEditCommentForm()
                                 setEditCommentBody(comment.body)
                             }}>edit</button> : null}
-                        {comment.user_id == user.id ? <button>delete</button> : null}
+                        {comment.user_id == user.id ? <button onClick={() => {
+                            setCommentId(comment.id)
+                            handleDeleteComment()
+                        }}>delete</button> : null}
                     </div>
                 ))}
             </div>
