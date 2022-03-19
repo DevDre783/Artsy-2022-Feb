@@ -34,7 +34,7 @@ function LoadedComments({ listingId, oneListing }) {
 
         dispatch(getListingComments(listingId))
         // dispatch(getAllUsers())
-    }, [dispatch, body])
+    }, [dispatch, body, listingId])
 
 
     const handleSubmitComment = async (e) => {
