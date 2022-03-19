@@ -15,7 +15,7 @@ function LoadedComments({ listingId, oneListing }) {
 
     const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
-    const commentIds = Object.keys(useSelector(state => state.comments))
+    // const commentIds = Object.keys(useSelector(state => state.comments))
     // console.log("FROM LOADED COMMENTS", commentIds)
     const [editCommentBody, setEditCommentBody] = useState("comments original body goes here")
     const [errors, setErrors] = useState([]);
@@ -63,15 +63,22 @@ function LoadedComments({ listingId, oneListing }) {
     const handleEditComment = async (e) => {
         e.preventDefault()
         console.log("FROM HANDLE EDIT", commentId)
-        dispatch(editingComment(oneListing.id, commentId, editCommentBody))
+        dispatch(getListingComments(oneListing?.id))
+        dispatch(editingComment(oneListing?.id, commentId, editCommentBody))
+
+
         // console.log("FROM HANDLE EDIT", comments[oneListing.id].listing_id)
-        dispatch(getListingComments(listingId))
         setShowEditForm(false)
     }
 
-    const handleDeleteComment = () => {
+    const handleDeleteComment = (commentId) => {
 
-        // dispatch(deleteComment(commentId, editCommentBody))
+        dispatch(deleteComment(commentId, editCommentBody))
+
+        if(deleteComment) {
+
+            dispatch(getListingComments(oneListing?.id))
+        }
         // console.log("FROM HANDLE DELETE", commentId)
     }
 
@@ -152,13 +159,13 @@ function LoadedComments({ listingId, oneListing }) {
                         {comment.user_id == user.id ? <button
                             style={{ marginBottom: "5%", marginTop: "1%" }}
                             onClick={ () => {
-                                setCommentId(comment.id)
-                                handleEditCommentForm()
-                                setEditCommentBody(comment.body)
+                                setCommentId(comment?.id)
+                                handleEditCommentForm(comment?.id)
+                                setEditCommentBody(comment?.body)
                             }}>edit</button> : null}
                         {comment.user_id == user.id ? <button onClick={() => {
-                            setCommentId(comment.id)
-                            handleDeleteComment()
+                            // setCommentId(comment.id)
+                            handleDeleteComment(comment?.id)
                         }}>delete</button> : null}
                     </div>
                 ))}
