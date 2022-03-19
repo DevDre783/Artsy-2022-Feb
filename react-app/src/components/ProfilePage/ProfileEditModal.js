@@ -21,8 +21,8 @@ function EditProfile({ prop = false }) {
             >Edit Profile
             </button>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
-                    <EditForm />
+                <Modal >
+                    <EditForm setShowModal={setShowModal}/>
                 </Modal>
             )}
         </>

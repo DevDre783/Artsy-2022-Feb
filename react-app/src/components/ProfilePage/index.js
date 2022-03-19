@@ -21,7 +21,7 @@ function ProfileDisplay() {
                     <div>
                     {/* <img className='profile__pic' src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img> */}
                         <FaSmile className='profile__pic' />
-                        <FaPlusCircle className='change__profile__pic' />
+                        {/* <FaPlusCircle className='change__profile__pic' /> */}
                     </div>
                 </div>
                 <div className='user__info__display'>
@@ -34,24 +34,6 @@ function ProfileDisplay() {
                 </div>
                 <div className='edit__profile__container'>
                     <ProfileEditModal />
-                </div>
-            </div>
-            <div className='mid__container'>
-                {/* <div className='owned__stock__percentage'>
-                    <button>Financials 68%</button>
-                </div> */}
-                {/* <div className='learn__more'>
-                    <p>Stocks are pieces of a company that investors can own <a className='learn__stocks' target="_blank" href="https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp">Learn more</a></p>
-
-                </div> */}
-                <div className='stock__categories'>
-                    {/* <div className='industry__category'>
-                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaBusinessTime className='icon' /> Financials</button></a>
-                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaLightbulb className='icon' /> Energy</button></a>
-                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaHouseUser className='icon' /> Real Estate</button></a>
-                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaMicrochip className='icon' /> Technology</button></a>
-                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaStethoscope className='icon' /> Healthcare</button></a>
-                    </div> */}
                 </div>
             </div>
             <div className='lower__container'>
