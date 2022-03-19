@@ -26,14 +26,7 @@
     align-items: center;
     position: absolute;
     border-radius: 15px;
-    background-color: rgb(2, 38, 11);
-    height: 30%;
-    width: 20%;
-    /* max-width: 700px; */
-    animation: slide_out 2s;
+    background-color: rgb(223, 41, 41);
+    height: 45%;
+    width: 20.5%;
   }
-
-   @keyframes slide_out {
-     from{width: 5%;}
-     to{width: 20%;}
-   }
