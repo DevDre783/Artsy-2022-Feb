@@ -32,9 +32,9 @@ function LoadedComments({ listingId, oneListing }) {
 
         setErrors(validationErrors);
 
-        dispatch(getListingComments(listingId))
+        dispatch(getListingComments(oneListing.id))
         // dispatch(getAllUsers())
-    }, [dispatch, body, listingId])
+    }, [dispatch, body, oneListing.id])
 
 
     const handleSubmitComment = async (e) => {
@@ -57,28 +57,25 @@ function LoadedComments({ listingId, oneListing }) {
     }
 
     const handleClearComment = () => {
-        setBody("")
+        setBody('')
     }
 
     const handleEditComment = async (e) => {
         e.preventDefault()
         console.log("FROM HANDLE EDIT", commentId)
-        dispatch(getListingComments(oneListing?.id))
-        dispatch(editingComment(oneListing?.id, commentId, editCommentBody))
+        await dispatch(editingComment(oneListing?.id, commentId, editCommentBody))
+        await dispatch(getListingComments(oneListing?.id))
 
 
         // console.log("FROM HANDLE EDIT", comments[oneListing.id].listing_id)
         setShowEditForm(false)
     }
 
-    const handleDeleteComment = (commentId) => {
+    const handleDeleteComment = async (commentId) => {
 
-        dispatch(deleteComment(commentId, editCommentBody))
+        await dispatch(deleteComment(commentId, editCommentBody))
+        await dispatch(getListingComments(oneListing?.id))
 
-        if(deleteComment) {
-
-            dispatch(getListingComments(oneListing?.id))
-        }
         // console.log("FROM HANDLE DELETE", commentId)
     }
 
