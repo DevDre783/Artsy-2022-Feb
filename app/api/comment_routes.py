@@ -53,13 +53,14 @@ def edit_comment():
     return jsonify(currComment.to_dict())
 
 
-# @comment_routes.route('/<int:id>', methods=['DELETE'])
+# @comment_routes.route('/delete', methods=['DELETE'])
 # @login_required
-# def delete_comment(id):
+# def delete_comment():
+#     commentId = request.json["commentId"]
 
-#     currcomment = Comment.query.get(id)
+#     currComment = Comment.query.get(commentId)
 
 #     db.session.delete(currComment)
 #     db.session.commit()
 
-#     return currListing.to_dict()
+#     return currComment.to_dict()
