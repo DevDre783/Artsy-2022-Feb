@@ -11,19 +11,26 @@ import './ListingDetails.css'
 function ListingDetailsPage() {
     const { listingId } = useParams();
     const user = useSelector(state => state.session.user)
-    const user_id = user.id
+    // const user_id = user.id
     const oneListing = useSelector(state => state?.main_listings[listingId]);
     const [editListingTitle, setEditListingTitle] = useState(oneListing?.title)
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
-    const [body, setBody] = useState('');
+    // const [body, setBody] = useState('');
 
     const dispatch = useDispatch();
     const history = useHistory();
 
     useEffect(() => {
+        const listingTitleValidation = [];
+
+        if(editListingTitle.length < 5) listingTitleValidation.push("Title must be longer than 5 characters");
+
+        setErrors(listingTitleValidation);
+
         dispatch(getOneListing(listingId))
-    }, [dispatch, listingId])
+
+    }, [dispatch, listingId, editListingTitle])
 
     // const handleSubmitComment = async (e) => {
     //     e.preventDefault();
@@ -76,7 +83,7 @@ function ListingDetailsPage() {
                 <div className='listing__content'>
                     <img src={oneListing.url}></img>
                     <h2>{oneListing.title}</h2>
-                    {user.id == oneListing.user_id ? <button onClick={handleEditListingForm}>edit</button> : null}
+                    {user.id == oneListing.user_id ? <button onClick={handleEditListingForm} disabled={errors.length > 0}>edit</button> : null}
                     {user.id == oneListing.user_id ? <button onClick={handleDeleteListing}>delete</button> : null}
 
                     {showEditForm && (
@@ -95,7 +102,7 @@ function ListingDetailsPage() {
                             </div>
                             <div className='profile__errors'>
                                 {errors.map((error) => (
-                                    <li style={{ color: "white" }} key={error}>{error}</li>
+                                    <li style={{ color: "red" }} key={error}>{error}</li>
                                 ))}
                             </div>
                         </>

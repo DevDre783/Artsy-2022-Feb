@@ -19,6 +19,7 @@ function LoadedComments({ listingId, oneListing }) {
     // console.log("FROM LOADED COMMENTS", commentIds)
     const [editCommentBody, setEditCommentBody] = useState("comments original body goes here")
     const [errors, setErrors] = useState([]);
+    const [editErrors, setEditErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
 
     // const commentIds = comments.map(comment => {
@@ -27,14 +28,19 @@ function LoadedComments({ listingId, oneListing }) {
 
     useEffect(() => {
         const validationErrors = [];
+        const editValidationsErrors = [];
 
         if (body.length === 0) validationErrors.push("Cannot submit an empty comment");
+        if (body.length < 25) validationErrors.push("Comment must be more than 25 characters");
+
+        if (editCommentBody.length < 25) editValidationsErrors.push("Editing comment must be more than 25 characters");
 
         setErrors(validationErrors);
+        setEditErrors(editValidationsErrors);
 
         dispatch(getListingComments(oneListing.id))
         // dispatch(getAllUsers())
-    }, [dispatch, body, oneListing.id])
+    }, [dispatch, body, oneListing.id, editCommentBody])
 
 
     const handleSubmitComment = async (e) => {
@@ -92,6 +98,11 @@ function LoadedComments({ listingId, oneListing }) {
                     value={body}
                     onChange={e => setBody(e.target.value)}
                 />
+                <div className='profile__errors'>
+                            {errors.map((error) => (
+                                <li style={{ color: "red" }} key={error}>{error}</li>
+                            ))}
+                        </div>
                         <button onClick={handleSubmitComment}
                             disabled={errors.length > 0}
                             type="submit"
@@ -112,15 +123,15 @@ function LoadedComments({ listingId, oneListing }) {
                                     onChange={(e) => setEditCommentBody(e.target.value)}
                                     placeholder="Edit comment..."
                                 />
-                                <button type="submit" onClick={handleEditComment}>Submit</button>
+                                <button type="submit" onClick={handleEditComment} disabled={editErrors.length > 0}>Submit</button>
                                 <button type="submit" onClick={handleCancelEditCommentForm}>Cancel</button>
                             </div>
                         </div>
-                        {/* <div className='profile__errors'>
-                            {errors.map((error) => (
+                        <div className='profile__errors'>
+                            {editErrors.map((error) => (
                                 <li style={{ color: "red" }} key={error}>{error}</li>
                             ))}
-                        </div> */}
+                        </div>
                     </>
                 )}
             </div>
