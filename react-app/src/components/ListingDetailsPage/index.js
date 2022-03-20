@@ -24,13 +24,13 @@ function ListingDetailsPage() {
     useEffect(() => {
         const listingTitleValidation = [];
 
-        if(editListingTitle.length < 5) listingTitleValidation.push("Title must be longer than 5 characters");
+        if(editListingTitle?.length < 5) listingTitleValidation.push("Title must be longer than 5 characters");
 
         setErrors(listingTitleValidation);
 
         dispatch(getOneListing(listingId))
 
-    }, [dispatch, listingId, editListingTitle])
+    }, [dispatch, listingId])
 
     // const handleSubmitComment = async (e) => {
     //     e.preventDefault();
@@ -82,7 +82,7 @@ function ListingDetailsPage() {
             {oneListing?.id == listingId ?
                 <div className='listing__content'>
                     <img src={oneListing.url}></img>
-                    <h2>{oneListing.title}</h2>
+                    <h2 className='title__header'>{oneListing.title}</h2>
                     {user.id == oneListing.user_id ? <button onClick={handleEditListingForm} disabled={errors.length > 0}>edit</button> : null}
                     {user.id == oneListing.user_id ? <button onClick={handleDeleteListing}>delete</button> : null}
 

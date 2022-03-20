@@ -30,9 +30,6 @@ export function Modal({ onClose, children }) {
         <div id="modal">
             <div id="modal-background" onClick={onClose} />
             <div id="modal-content">
-                {/* <div id="modal-img">
-                    <img id='img' src='https://www.artandobject.com/sites/default/files/procreate-mural.jpg' alt='some shit' />
-                </div> */}
                 <div id='modal-form'>
                     {children}
                 </div>

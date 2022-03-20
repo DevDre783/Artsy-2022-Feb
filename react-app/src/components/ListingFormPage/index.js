@@ -39,23 +39,34 @@ function ListingFormPage () {
 
     return (
         <>
-            <div className="form__container">
+        <div className='background__image'>
+        <img className='background__image' src='https://hdwallpaperim.com/wp-content/uploads/2017/08/25/463034-men-simple_background-digital_art-graffiti-clouds-minimalism-white_background.jpg'></img>
+        </div>
+            <div className="form__container1">
                 <form className="the__form" onSubmit={handleSubmit}>
                     <div className="main__info">
-                        <h1>Share your Art!</h1>
-                        Title<input
+                        <h1 className='form__header'>Share your work!</h1>
+                        <div className='title__input__container'>
+                        <input
+                        className='title__input'
                             type='text'
                             placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
-                        Image<input
+                        </div>
+                        <div className='image__input__container'>
+                        <input
+                            className='image__input'
                             type='string'
                             placeholder="Image url"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                         />
-                        Description<textarea
+                        </div>
+                        <div className='description__input__container'>
+                        <textarea
+                        className='description__input'
                         style={{resize: "none"}}
                         rows="6"
                         cols="40"
@@ -64,6 +75,7 @@ function ListingFormPage () {
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         />
+                        </div>
                         <button
                             className="form-submit"
                             disabled={errors.length > 0}
@@ -75,8 +87,8 @@ function ListingFormPage () {
                     </div>
                 </form>
             </div>
-            <div style={{marginLeft: "38.5%"}}>
-                <ul className="listingForm__errors">
+            <div style={{marginLeft: "40.3%"}}>
+                <ul style={{listStyle: "none"}} className="listingForm__errors">
                     {errors.map(error => (
                         <li key={error}>{error}</li>
                         ))}

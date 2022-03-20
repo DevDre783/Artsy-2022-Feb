@@ -31,9 +31,9 @@ function LoadedComments({ listingId, oneListing }) {
         const editValidationsErrors = [];
 
         if (body.length === 0) validationErrors.push("Cannot submit an empty comment");
-        if (body.length < 25) validationErrors.push("Comment must be more than 25 characters");
+        if (body.length < 15) validationErrors.push("Comment must be more than 15 characters");
 
-        if (editCommentBody.length < 25) editValidationsErrors.push("Editing comment must be more than 25 characters");
+        if (editCommentBody.length < 15) editValidationsErrors.push("Editing comment must be more than 15 characters");
 
         setErrors(validationErrors);
         setEditErrors(editValidationsErrors);

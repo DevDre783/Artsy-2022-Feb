@@ -148,7 +148,7 @@ body {
 .profile-menu {
     /* z-index: -1; */
     /* appearance: none; */
-    /* background: transparent; */
+    background: transparent;
     border: 1px solid #DDDDDD;
     color: #222222;
     cursor: pointer;
@@ -198,11 +198,21 @@ body {
 }
 
 .fa-user-circle {
-    transform: scale(1.4);
+    transform: scale(1.2);
     padding-top: 3px;
     padding-right: 10px;
     height: 20px;
     width: 20px;
+}
+
+.profile__img {
+    z-index: 1;
+    transform: scale(1.6);
+    padding-top: 3px;
+    padding-right: 10px;
+    height: 20px;
+    width: 30px;
+    /* border-radius: 50%; */
 }
 
 .profile-dropdown {
@@ -223,7 +233,10 @@ body {
 }
 
 .Dd-username {
+    color: white;
+    font-family: 'Finger Paint', cursive;
     padding-top: 8%;
+    padding-left: 6%;
     padding-bottom: 8%;
     font-size: 14pt;
     width: 100%;
@@ -236,8 +249,10 @@ body {
 }
 
 .Dd-email {
+    color: white;
+    font-family: 'Finger Paint', cursive;
     margin-top: 15px;
-    margin-left: 10px;
+    padding-left: 6%;
     font-size: 14pt;
     font-weight: bold;
     list-style: none;
@@ -248,18 +263,19 @@ body {
     border-bottom: 1px black solid;
 }
 
-/* .my__profile {
+.my__profile {
     text-decoration: none;
+    font-family: 'Finger Paint', cursive;
     color: white;
     font-size: 14pt;
     font-weight: bold;
     list-style: none;
     padding-bottom: 15px;
-    margin-left: 10px;
+    margin-left: 10%;
 }
 
 .my__profile:hover {
-    color: rgb(160, 160, 160);
+    color: rgb(214, 15, 15);
 }
 
 .my__profile__container {
@@ -267,18 +283,20 @@ body {
     padding-top: 6%;
     padding-bottom: 8%;
     padding-right: 6%;
+    padding-left: 6%;
 }
 
 .my__profile__container:hover {
     color: rgb(255, 251, 0);
-} */
+}
 
 .logout-btn {
+    font-family: 'Finger Paint', cursive;
     background: none;
     border: none;
     color: white;
-    background-color: rgb(172, 172, 172);
-    border: 2px solid rgb(92, 92, 92);
+    background-color: rgb(215, 25, 25);
+    border: 2px solid rgb(215, 25,25);
     border-radius: 50px;
     padding: 2%;
     text-align: center;
@@ -296,8 +314,8 @@ body {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.657);
     cursor: pointer;
     transform: scale(1.1);
-    border: 2px solid rgb(104, 104, 104);
-    background-color: rgb(102, 102, 102);
+    border: 2px solid rgb(255, 0, 0);
+    background-color: rgb(255, 0, 0);
     color: white;
 }
 
@@ -322,12 +340,28 @@ body {
     background-color: rgb(83, 83, 83);
 }
 
-.my__lists__tab {
+.share__tab a {
     display: flex;
     flex-direction: row;
+    text-decoration: none;
     width: 100%;
+    text-shadow: none;
 }
 
-.my__lists__tab a {
+.share__tab::after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    display: block;
+    background: #ff0008;
+    transition: 300ms;
+}
+
+.share__tab:hover::after {
+  width: 90%;
+}
+
+.share__tab a {
     font-size: 12pt;
+    text-shadow: none;
 }
