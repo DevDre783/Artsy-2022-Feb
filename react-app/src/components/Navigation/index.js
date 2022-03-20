@@ -52,7 +52,7 @@ function Navbar({ isLoaded }) {
       {!user ? null :
         <>
           <div className='logo__container'>
-            <Link to={`/browse`}><h1>Artsy</h1></Link><FaPalette className='palette__icon' style={{color: "red"}}/>
+            <Link to={`/browse`}><h1 className='logo__siteName'>Artsy</h1></Link><FaPalette className='palette__icon' style={{color: "red"}}/>
           </div>
           <div className=''>
             <div>
@@ -68,7 +68,7 @@ function Navbar({ isLoaded }) {
         </>
       }
         <div className='profile__icon'>
-         {!user ? null : <div className='my__lists__tab'><NavLink to={`/listing-form`} style={{color: "red", marginRight: "50px"}}>Share</NavLink></div>}
+         {!user ? null : <div className='share__tab'><NavLink to={`/listing-form`} style={{color: "red", marginRight: "50px"}}>Share your work</NavLink></div>}
          {!user ? null :<ProfileButton />}
         </div>
     </nav>
