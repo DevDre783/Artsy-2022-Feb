@@ -23,8 +23,9 @@ function ListingFormPage () {
 
         if (title.length < 8) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
         if (description.length === 0) validationErrors.push("Please provide a brief description for your listing.")
-        if (description.length < 25) validationErrors.push("Description is too short. Please provide some more detail.")
+        if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
         if (!url.includes("http") || !url.includes("https")) validationErrors.push("MUST provide at least one VALID photo for your listing (https).")
+        if (url.length) validationErrors.push("Url CANNOT be longer than 500 characters..")
 
         setErrors(validationErrors);
 
