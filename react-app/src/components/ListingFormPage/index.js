@@ -25,7 +25,7 @@ function ListingFormPage () {
         if (description.length === 0) validationErrors.push("Please provide a brief description for your listing.")
         if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
         if (!url.includes("http") || !url.includes("https")) validationErrors.push("MUST provide at least one VALID photo for your listing (https).")
-        if (url.length) validationErrors.push("Url CANNOT be longer than 500 characters..")
+        if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
 
         setErrors(validationErrors);
 
@@ -41,6 +41,13 @@ function ListingFormPage () {
     return (
         <>
         <div className='background__image'>
+        <div className='errors__container' style={{marginLeft: "40.3%"}}>
+                <ul style={{listStyle: "none"}} className="listingForm__errors">
+                    {errors.map(error => (
+                        <li key={error}>{error}</li>
+                        ))}
+                </ul>
+            </div>
         <img className='background__image' src='https://hdwallpaperim.com/wp-content/uploads/2017/08/25/463034-men-simple_background-digital_art-graffiti-clouds-minimalism-white_background.jpg'></img>
         </div>
             <div className="form__container1">
@@ -87,13 +94,6 @@ function ListingFormPage () {
                         </Link>
                     </div>
                 </form>
-            </div>
-            <div style={{marginLeft: "40.3%"}}>
-                <ul style={{listStyle: "none"}} className="listingForm__errors">
-                    {errors.map(error => (
-                        <li key={error}>{error}</li>
-                        ))}
-                </ul>
             </div>
         </>
     )
