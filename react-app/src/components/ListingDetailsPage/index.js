@@ -11,16 +11,15 @@ import './ListingDetails.css'
 function ListingDetailsPage() {
     const { listingId } = useParams();
     const user = useSelector(state => state.session.user)
-    // const user_id = user.id
     const oneListing = useSelector(state => state?.main_listings[listingId]);
     const [editListingTitle, setEditListingTitle] = useState(oneListing?.title)
     const [errors, setErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
-    // const [body, setBody] = useState('');
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    
     useEffect(() => {
         const listingTitleValidation = [];
 
@@ -40,7 +39,6 @@ function ListingDetailsPage() {
 
     const handleEditListingForm = (e) => {
         e.preventDefault()
-        // dispatch(edit(listingId))
 
         if (!showEditForm) {
             setShowEditForm(true)

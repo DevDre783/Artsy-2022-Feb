@@ -154,11 +154,39 @@ textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 100;
 }
 
 .background__image {
     position: absolute;
+    z-index: -1;
     height: 900px;
     width: 1400px;
 }
+
+.listingForm__errors {
+    position: absolute;
+    z-index: 1;
+    margin-top: 16%;
+    margin-left: -8%;
+}
+
+
+/* MEDIA QUERIES */
+
+
+@media only screen and (max-width: 2000px) {
+    .listingForm__errors {
+        position: absolute;
+        z-index: 1;
+        margin-top: 16%;
+        margin-left: -22%;
+    }
+
+    .background__image {
+        position: absolute;
+        z-index: -1;
+        height: 900px;
+        width: 1400px;
+        margin-left: -10%;
+    }
+  }
