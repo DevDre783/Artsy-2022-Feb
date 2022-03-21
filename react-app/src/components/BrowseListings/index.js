@@ -15,6 +15,10 @@ function BrowseListings() {
         dispatch(getListings(listings))
     }, [dispatch])
 
+    const handleBrokenImg= (e) => {
+        e.target.src = "https://bitsofco.de/content/images/2018/12/broken-1.png"
+    }
+
     return (
         <>
             <div className='heading__image'>
@@ -29,7 +33,7 @@ function BrowseListings() {
                         <div className='listing__container' key={listing?.id}>
                             <h1 className='listing__title'>{listing?.title}</h1>
                             <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing.id}`}>
-                                <img src={listing?.url} className="individual__listing"></img>
+                                <img src={listing?.url} onError={handleBrokenImg} className="individual__listing"></img>
                             </Link>
                         </div>
                     ))}

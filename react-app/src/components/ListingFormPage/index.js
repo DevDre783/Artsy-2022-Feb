@@ -34,6 +34,7 @@ function ListingFormPage () {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         dispatch(postListing(user_id, title, url, description))
         history.push("/browse")
     };
