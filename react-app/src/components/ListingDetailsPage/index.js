@@ -19,7 +19,7 @@ function ListingDetailsPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    
+
     useEffect(() => {
         const listingTitleValidation = [];
 
@@ -75,11 +75,15 @@ function ListingDetailsPage() {
         return <Redirect to={`/browse/${listingId}`}/>
     }
 
+    const handleBrokenImg= (e) => {
+        e.target.src = "https://bitsofco.de/content/images/2018/12/broken-1.png"
+    }
+
     return (
         <div className='details__container'>
             {oneListing?.id == listingId ?
                 <div className='listing__content'>
-                    <img src={oneListing.url}></img>
+                    <img src={oneListing.url} onError={handleBrokenImg}></img>
                     <h2 className='title__header'>{oneListing.title}</h2>
                     {user.id == oneListing.user_id ? <button onClick={handleEditListingForm} disabled={errors.length > 0}>edit</button> : null}
                     {user.id == oneListing.user_id ? <button onClick={handleDeleteListing}>delete</button> : null}
