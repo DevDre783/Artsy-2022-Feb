@@ -46,6 +46,7 @@
 }
 
 .comment__div {
+    font-family: sans-serif;
     border: 1px grey solid;
     height: 60%;
     width: 545px;
@@ -260,4 +261,8 @@
 
 .description__p {
     font-family: 'Courier New', Courier, monospace;
+}
+
+.editTitle__errors {
+    margin-top: 0.5%;
 }

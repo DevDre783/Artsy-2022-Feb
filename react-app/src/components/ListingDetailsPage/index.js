@@ -30,7 +30,7 @@ function ListingDetailsPage() {
 
         dispatch(getOneListing(listingId))
 
-    }, [dispatch, listingId])
+    }, [dispatch, listingId, editListingTitle])
 
     // const handleSubmitComment = async (e) => {
     //     e.preventDefault();
@@ -48,23 +48,16 @@ function ListingDetailsPage() {
         }
     }
 
-    const handleEditListing = async (e) => {
-        e.preventDefault()
-        const editlisting_errors = [];
+    const handleEditListing = async () => {
+        // e.preventDefault()
 
-        if (editListingTitle.length < 5) editlisting_errors.push("Field must not be empty.")
+        await dispatch(editingListing(listingId, editListingTitle))
+        await dispatch(getOneListing(listingId))
 
-        if (editlisting_errors.length > 0) {
-            setErrors(editlisting_errors);
-        }
-        else {
-            dispatch(editingListing(listingId, editListingTitle))
-            dispatch(getOneListing(listingId))
+        setShowEditForm(false)
 
-            setShowEditForm(false)
-        }
         history.push(`/browse`)
-        dispatch(getListings(listingId))
+        await dispatch(getListings(listingId))
     }
 
     const handleDeleteListing = async () => {
@@ -89,7 +82,7 @@ function ListingDetailsPage() {
                         <h2 className='title__header'>{oneListing.title }{user.id == oneListing.user_id ? <button className='edit__btn' onClick={handleEditListingForm} disabled={errors.length > 0}><FaEdit/></button> : null}
                             {user.id == oneListing.user_id ? <button className='delete__btn' onClick={handleDeleteListing}><FaTrashAlt/></button> : null}
                         </h2>
-                        <p>{user.username}</p>
+                        <p>{oneListing.username}</p>
                         {showEditForm && (
                             <>
                                 <div className='edit__listing'>
@@ -101,10 +94,10 @@ function ListingDetailsPage() {
                                             onChange={(e) => setEditListingTitle(e.target.value)}
                                             placeholder="Edit Listing title..."
                                             />
-                                        <button className='edit__submitBtn' type="submit" onClick={handleEditListing}>Submit</button>
+                                        <button disabled={errors.length > 0} className='edit__submitBtn' type="submit" onClick={() => handleEditListing(editListingTitle)}>Submit</button>
                                     </div>
                                 </div>
-                                <div className='profile__errors'>
+                                <div className='editTitle__errors'>
                                     {errors.map((error) => (
                                         <li style={{ color: "red" }} key={error}>{error}</li>
                                     ))}
