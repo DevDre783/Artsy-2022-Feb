@@ -48,7 +48,7 @@ body {
     position: fixed;
     top: 0;
     background-color: white;
-    box-shadow: 2px 5px 5px 5px rgba(36, 36, 36, 0.5);
+    box-shadow: 2px 5px 5px 5px rgba(36, 36, 36, 0.438);
     width: 100%;
     display: flex;
     justify-content: space-around;

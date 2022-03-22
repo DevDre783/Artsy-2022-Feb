@@ -24,8 +24,8 @@ function ListingFormPage () {
         if (title.length < 8) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
         if (description.length === 0) validationErrors.push("Please provide a brief description for your listing.")
         if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
-        if (!url.includes("http") || !url.includes("https")) validationErrors.push("MUST provide at least one VALID photo for your listing (https).")
         if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
+        if(!url.match(/\.(jpeg|jpg|gif|png)$/) || !url.includes("https")) validationErrors.push("Not a Valid image URL")
 
         setErrors(validationErrors);
 
@@ -43,7 +43,7 @@ function ListingFormPage () {
         <>
         <div className='background__image'>
         <div className='errors__container' style={{marginLeft: "40.3%"}}>
-                <ul style={{listStyle: "none"}} className="listingForm__errors">
+                <ul className="listingForm__errors">
                     {errors.map(error => (
                         <li key={error}>{error}</li>
                         ))}
