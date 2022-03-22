@@ -11,20 +11,15 @@ function LoadedComments({ listingId, oneListing }) {
 
     const user = useSelector(state => state.session.user);
     const user_id = user.id
-    const [commentId, setCommentId] = useState()
-
-    const [body, setBody] = useState('');
     const comments = Object.values(useSelector(state => state?.comments));
-    // const commentIds = Object.keys(useSelector(state => state.comments))
-    // console.log("FROM LOADED COMMENTS", commentIds)
+
+    const [commentId, setCommentId] = useState()
+    const [body, setBody] = useState('');
     const [editCommentBody, setEditCommentBody] = useState("comments original body goes here")
     const [errors, setErrors] = useState([]);
     const [editErrors, setEditErrors] = useState([]);
     const [showEditForm, setShowEditForm] = useState(false)
 
-    // const commentIds = comments.map(comment => {
-    //     return comment.id
-    // })
 
     useEffect(() => {
         const validationErrors = [];
@@ -39,7 +34,7 @@ function LoadedComments({ listingId, oneListing }) {
         setEditErrors(editValidationsErrors);
 
         dispatch(getListingComments(oneListing.id))
-        // dispatch(getAllUsers())
+
     }, [dispatch, body, oneListing.id, editCommentBody])
 
 
@@ -47,7 +42,6 @@ function LoadedComments({ listingId, oneListing }) {
         e.preventDefault();
         dispatch(postComment(user_id, listingId, body))
         setBody('')
-        // history.push(`/browse/${listingId}`)
     };
 
     const handleEditCommentForm = () => {
@@ -68,12 +62,10 @@ function LoadedComments({ listingId, oneListing }) {
 
     const handleEditComment = async (e) => {
         e.preventDefault()
-        console.log("FROM HANDLE EDIT", commentId)
+
         await dispatch(editingComment(oneListing?.id, commentId, editCommentBody))
         await dispatch(getListingComments(oneListing?.id))
 
-
-        // console.log("FROM HANDLE EDIT", comments[oneListing.id].listing_id)
         setShowEditForm(false)
     }
 
@@ -81,14 +73,12 @@ function LoadedComments({ listingId, oneListing }) {
 
         await dispatch(deleteComment(commentId, editCommentBody))
         await dispatch(getListingComments(oneListing?.id))
-
-        // console.log("FROM HANDLE DELETE", commentId)
     }
 
     return (
         <>
             <div className='comment_submission_box'>
-                <p>Leave a Comment</p>
+                <p style={{fontFamily: "sans-serif"}}>Leave a Comment</p>
                 <textarea
                     style={{ resize: "none" }}
                     rows="6"
@@ -98,17 +88,17 @@ function LoadedComments({ listingId, oneListing }) {
                     value={body}
                     onChange={e => setBody(e.target.value)}
                 />
-                <div className='profile__errors'>
-                            {errors.map((error) => (
-                                <li style={{ color: "red" }} key={error}>{error}</li>
-                            ))}
-                        </div>
                         <button onClick={handleSubmitComment}
                             disabled={errors.length > 0}
                             type="submit"
                         >Submit
                         </button>
                         <button onClick={handleClearComment}>Clear</button>
+                <div className='comment__errors'>
+                            {errors.map((error) => (
+                                <li style={{ color: "red" }} key={error}>{error}</li>
+                            ))}
+                </div>
                 {showEditForm && (
                     <>
                         <div className='edit__comment'>
@@ -127,7 +117,7 @@ function LoadedComments({ listingId, oneListing }) {
                                 <button type="submit" onClick={handleCancelEditCommentForm}>Cancel</button>
                             </div>
                         </div>
-                        <div className='profile__errors'>
+                        <div className='comment__errors'>
                             {editErrors.map((error) => (
                                 <li style={{ color: "red" }} key={error}>{error}</li>
                             ))}
@@ -139,7 +129,7 @@ function LoadedComments({ listingId, oneListing }) {
                 {comments.map(comment => (
                     <div>
                         <h3>{comment.username}</h3>
-                        <div className='' style={{ border: "2px black solid", padding: "25px", width: "100%", height: "60%" }}>
+                        <div className='' style={{ border: "1px grey solid", padding: "25px", width: "100%", height: "60%" }}>
                             <p key={comment.id}>{comment.body}</p>
                         </div>
 
@@ -172,7 +162,6 @@ function LoadedComments({ listingId, oneListing }) {
                                 setEditCommentBody(comment?.body)
                             }}>edit</button> : null}
                         {comment.user_id == user.id ? <button onClick={() => {
-                            // setCommentId(comment.id)
                             handleDeleteComment(comment?.id)
                         }}>delete</button> : null}
                     </div>
