@@ -36,10 +36,11 @@ body {
 .individual__listing {
     width: 30vw;
     margin-bottom: 10%;
+    box-shadow: 0 0 5px 5px rgb(156, 156, 156);
 }
 
 .individual__listing:hover {
-    box-shadow: 0 0 5px 5px rgb(156, 156, 156);
+    transform: scale(1.02);
 }
 
 .image {

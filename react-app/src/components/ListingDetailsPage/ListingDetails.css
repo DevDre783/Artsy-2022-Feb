@@ -212,8 +212,9 @@
 }
 
 .detail__titleAndEditBtn p {
-    font-size: 20pt;
-    font-family: 'Sofia', cursive;
+    font-size: 25pt;
+    font-family: 'Rochester', cursive;
+    font-style: italic;
 }
 
 .clearComment__btn:hover {
