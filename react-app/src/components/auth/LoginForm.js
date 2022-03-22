@@ -21,26 +21,26 @@ const LoginForm = () => {
   //   // history.push('/profiles')
   // }
 
-  const handleClick = async (e) => {
-    e.preventDefault()
+  // const handleClick = async (e) => {
+  //   e.preventDefault()
 
-    const loginErrors = [];
+  //   const loginErrors = [];
 
-    if(!email.includes("@")) loginErrors.push("Please provide a valid Email");
-    if (!password) loginErrors.push("Please provide your password")
+  //   if(!email.includes("@")) loginErrors.push("Please provide a valid Email");
+  //   if (!password) loginErrors.push("Please provide your password")
 
 
-    if (loginErrors.length > 0) {
-      return setErrors(loginErrors)
-    } else {
-      await dispatch(sessionActions.login(email, password))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors)
-        });
-      history.push('/browse')
-    }
-  }
+  //   if (loginErrors.length > 0) {
+  //     return setErrors(loginErrors)
+  //   } else {
+  //     await dispatch(sessionActions.login(email, password))
+  //       .catch(async (res) => {
+  //         const data = await res.json();
+  //         if (data && data.errors) setErrors(data.errors)
+  //       });
+  //     history.push('/browse')
+  //   }
+  // }
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/browse' />;
   }
 
   return (
@@ -93,7 +93,7 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
           </div>
-            <button onClick={handleClick} className='signin__form__btn' type='submit'>Sign In</button>
+            <button className='signin__form__btn' type='submit'>Sign In</button>
         </form>
         <p>New to Artsy? <Link to={'/sign-up'}>Sign up now.</Link></p>
       </div>

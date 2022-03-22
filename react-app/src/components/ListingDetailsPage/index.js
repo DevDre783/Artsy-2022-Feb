@@ -5,6 +5,7 @@ import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { getListingComments } from '../../store/comment';
 import { deleteListings, editingListing, getListings, getOneListing, postListing } from '../../store/listing';
 import LoadedComments from '../LoadedComments';
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import './ListingDetails.css'
 
 
@@ -52,6 +53,7 @@ function ListingDetailsPage() {
         const editlisting_errors = [];
 
         if (editListingTitle.length <= 0) editlisting_errors.push(<p style={{color: "red"}}>Field must not be empty.</p>)
+        if (editListingTitle.length > 15) editlisting_errors.push(<p style={{color: "red"}}>Title must not be longer than 15 characters.</p>)
 
         if (editlisting_errors.length > 0) {
             setErrors(editlisting_errors);
@@ -84,38 +86,41 @@ function ListingDetailsPage() {
             {oneListing?.id == listingId ?
                 <div className='listing__content'>
                     <img src={oneListing.url} onError={handleBrokenImg}></img>
-                    <h2 className='title__header'>{oneListing.title}</h2>
-                    {user.id == oneListing.user_id ? <button onClick={handleEditListingForm} disabled={errors.length > 0}>edit</button> : null}
-                    {user.id == oneListing.user_id ? <button onClick={handleDeleteListing}>delete</button> : null}
-
-                    {showEditForm && (
-                        <>
-                            <div className='edit__listing'>
+                    <div className='detail__titleAndEditBtn'>
+                        <h2 className='title__header'>{oneListing.title }{user.id == oneListing.user_id ? <button className='edit__btn' onClick={handleEditListingForm} disabled={errors.length > 0}><FaEdit/></button> : null}
+                            By: {user.username}
+                            {user.id == oneListing.user_id ? <button className='delete__btn' onClick={handleDeleteListing}><FaTrashAlt/></button> : null}
+                        {showEditForm && (
+                            <>
                                 <div className='edit__listing'>
-                                    <input
-                                        type="text"
-                                        name="edit-listing"
-                                        value={editListingTitle}
-                                        onChange={(e) => setEditListingTitle(e.target.value)}
-                                        placeholder="Edit Title..."
-                                    />
-                                    <button type="submit" onClick={handleEditListing}>Submit</button>
+                                    <div className='edit__listing'>
+                                        <input
+                                            type="text"
+                                            name="edit-listing"
+                                            value={editListingTitle}
+                                            onChange={(e) => setEditListingTitle(e.target.value)}
+                                            placeholder="Edit Title..."
+                                        />
+                                        <button className='edit__submitBtn' type="submit" onClick={handleEditListing}>Submit</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='profile__errors'>
-                                {errors.map((error) => (
-                                    <li style={{ color: "red" }} key={error}>{error}</li>
-                                ))}
-                            </div>
-                        </>
-                    )}
-                    <h3>Owned By: {oneListing.username}</h3>
-                    <p>{oneListing.description}</p>
+                                <div className='profile__errors'>
+                                    {errors.map((error) => (
+                                        <li style={{ color: "red" }} key={error}>{error}</li>
+                                    ))}
+                                </div>
+                            </>
+                        )}
+                        </h2>
+                    </div>
                 </div>
             : null}
+            <div className='description__area'>
+                <p>{oneListing.description}</p>
+            </div>
             <div>
                 <h1 style={{marginTop: "3%", marginBottom: "1%"}} className='comments__heading'>Comments</h1>
-                <div className='comments__container' style={{ border: "2px black solid", padding: "25px", width: "40%", height: "60%" }}>
+                <div className='comments__container' style={{ border: "1px grey solid", padding: "25px", width: "40%", height: "60%" }}>
                     <LoadedComments listingId={oneListing.id} userId={user.id} oneListing={oneListing}/>
                 </div>
             </div>

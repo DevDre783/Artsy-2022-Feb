@@ -21,8 +21,9 @@
     width: 1450px;
 }
 
-.listing__content h2 {
+.detail__username {
     margin-top: 2%;
+    font-family: 'Finger Paint', cursive;
 }
 
 .comment_submission_box {
@@ -50,5 +51,80 @@
 
 .title__header {
     font-family: sans-serif;
+}
 
+.detail__titleAndEditBtn {
+    display: inline-block;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 43.5%;
+    margin-top: 0.5%;
+}
+
+.delete__btn {
+    border: none;
+    background: none;
+    background-color: none;
+    transform: scale(1.5);
+    color: rgb(206, 0, 0);
+    margin-left: 20.3%;
+}
+
+.edit__btn {
+    border: none;
+    background: none;
+    background-color: none;
+    color: rgb(65, 65, 65);
+    transform: scale(1.5);
+    margin-left: 1%;
+    margin-right: 10%;
+}
+
+.edit__btn:hover {
+    cursor: pointer;
+    color: black;
+    transform: scale(1.63);
+}
+
+.delete__btn:hover {
+    cursor: pointer;
+    color: red;
+    transform: scale(1.63);
+}
+
+.description__area {
+    font-family: sans-serif;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    text-align: left;
+    margin-left: 37%;
+    margin-right: 35%;
+}
+
+.edit__listing input {
+    background: none;
+    color: rgb(0, 0, 0);
+    /* background-color: rgba(128, 128, 128, 0.507); */
+    margin-top: 1%;
+    padding: 7px;
+    width: 11%;
+}
+
+.edit__listing input:focus {
+    border: none;
+}
+
+
+.edit__submitBtn {
+    border: none;
+    outline: none;
+    margin-left: 0.5%;
+    border: none;
+    background: none;
+    background-color: none;
+}
+
+.comment__errors {
+    margin-bottom: 2%;
 }
