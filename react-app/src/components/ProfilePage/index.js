@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { FaBusinessTime, FaHouseUser, FaLightbulb, FaMicrochip, FaPlusCircle, FaSmile, FaStethoscope } from 'react-icons/fa';
+import { FaUserAstronaut } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import ProfileEditModal from './ProfileEditModal'
 import './ProfilePage.css';
@@ -20,7 +20,7 @@ function ProfileDisplay() {
                 <div className='profile__pic__container'>
                     <div>
                     {/* <img className='profile__pic' src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img> */}
-                        <FaSmile className='profile__pic' />
+                        <FaUserAstronaut className='profile__pic' />
                         {/* <FaPlusCircle className='change__profile__pic' /> */}
                     </div>
                 </div>

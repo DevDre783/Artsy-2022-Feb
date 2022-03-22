@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from "../../store/user"
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
 import { deleteComment, editingComment, getListingComments, postComment } from '../../store/comment';
+import { FaEdit, FaTrashAlt, FaUserAstronaut } from "react-icons/fa";
 
 
 function LoadedComments({ listingId, oneListing }) {
@@ -48,6 +49,8 @@ function LoadedComments({ listingId, oneListing }) {
 
         if (!showEditForm) {
             setShowEditForm(true)
+        } else {
+            setShowEditForm(false)
         }
 
     }
@@ -88,12 +91,20 @@ function LoadedComments({ listingId, oneListing }) {
                     value={body}
                     onChange={e => setBody(e.target.value)}
                 />
-                        <button onClick={handleSubmitComment}
-                            disabled={errors.length > 0}
-                            type="submit"
-                        >Submit
-                        </button>
-                        <button onClick={handleClearComment}>Clear</button>
+                <div className='commentSubmission__btns'>
+                    <button
+                        className='submitComment__btn'
+                        onClick={handleSubmitComment}
+                        disabled={errors.length > 0}
+                        type="submit"
+                    >Submit
+                    </button>
+                    <button
+                        className='clearComment__btn'
+                        onClick={handleClearComment}
+                    >Clear
+                    </button>
+                </div>
                 <div className='comment__errors'>
                             {errors.map((error) => (
                                 <li style={{ color: "red" }} key={error}>{error}</li>
@@ -113,8 +124,8 @@ function LoadedComments({ listingId, oneListing }) {
                                     onChange={(e) => setEditCommentBody(e.target.value)}
                                     placeholder="Edit comment..."
                                 />
-                                <button type="submit" onClick={handleEditComment} disabled={editErrors.length > 0}>Submit</button>
-                                <button type="submit" onClick={handleCancelEditCommentForm}>Cancel</button>
+                                <button className='editComment__submit' type="submit" onClick={handleEditComment} disabled={editErrors.length > 0}>Submit</button>
+                                <button className='cancelComment__submit' type="submit" onClick={handleCancelEditCommentForm}>Cancel</button>
                             </div>
                         </div>
                         <div className='comment__errors'>
@@ -125,11 +136,11 @@ function LoadedComments({ listingId, oneListing }) {
                     </>
                 )}
             </div>
-            <div>
+            <div className='each__comment'>
                 {comments.map(comment => (
                     <div>
-                        <h3>{comment.username}</h3>
-                        <div className='' style={{ border: "1px grey solid", padding: "25px", width: "100%", height: "60%" }}>
+                        <h3><FaUserAstronaut style={{marginRight: "1%", marginLeft: "0.5%", transform: "scale(1.3)"}} /> {comment.username}</h3>
+                        <div className='comment__div' style={{ border: "1px grey solid", height: "60%" }}>
                             <p key={comment.id}>{comment.body}</p>
                         </div>
 
@@ -155,15 +166,18 @@ function LoadedComments({ listingId, oneListing }) {
                             </>
                         )} */}
                         {comment.user_id == user.id ? <button
+                        className='editComment__btn'
                             style={{ marginBottom: "5%", marginTop: "1%" }}
                             onClick={ () => {
                                 setCommentId(comment?.id)
                                 handleEditCommentForm(comment?.id)
                                 setEditCommentBody(comment?.body)
-                            }}>edit</button> : null}
-                        {comment.user_id == user.id ? <button onClick={() => {
+                            }}><FaEdit/></button> : null}
+                        {comment.user_id == user.id ? <button
+                        className='deleteComment__btn'
+                        onClick={() => {
                             handleDeleteComment(comment?.id)
-                        }}>delete</button> : null}
+                        }}><FaTrashAlt/></button> : null}
                     </div>
                 ))}
             </div>

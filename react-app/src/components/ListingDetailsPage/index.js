@@ -52,8 +52,7 @@ function ListingDetailsPage() {
         e.preventDefault()
         const editlisting_errors = [];
 
-        if (editListingTitle.length <= 0) editlisting_errors.push(<p style={{color: "red"}}>Field must not be empty.</p>)
-        if (editListingTitle.length > 15) editlisting_errors.push(<p style={{color: "red"}}>Title must not be longer than 15 characters.</p>)
+        if (editListingTitle.length < 5) editlisting_errors.push("Field must not be empty.")
 
         if (editlisting_errors.length > 0) {
             setErrors(editlisting_errors);
@@ -88,8 +87,9 @@ function ListingDetailsPage() {
                     <img src={oneListing.url} onError={handleBrokenImg}></img>
                     <div className='detail__titleAndEditBtn'>
                         <h2 className='title__header'>{oneListing.title }{user.id == oneListing.user_id ? <button className='edit__btn' onClick={handleEditListingForm} disabled={errors.length > 0}><FaEdit/></button> : null}
-                            By: {user.username}
                             {user.id == oneListing.user_id ? <button className='delete__btn' onClick={handleDeleteListing}><FaTrashAlt/></button> : null}
+                        </h2>
+                        <p>{user.username}</p>
                         {showEditForm && (
                             <>
                                 <div className='edit__listing'>
@@ -99,8 +99,8 @@ function ListingDetailsPage() {
                                             name="edit-listing"
                                             value={editListingTitle}
                                             onChange={(e) => setEditListingTitle(e.target.value)}
-                                            placeholder="Edit Title..."
-                                        />
+                                            placeholder="Edit Listing title..."
+                                            />
                                         <button className='edit__submitBtn' type="submit" onClick={handleEditListing}>Submit</button>
                                     </div>
                                 </div>
@@ -111,12 +111,11 @@ function ListingDetailsPage() {
                                 </div>
                             </>
                         )}
-                        </h2>
                     </div>
                 </div>
             : null}
             <div className='description__area'>
-                <p>{oneListing.description}</p>
+                <p className='note__header'>Note:</p><p className='description__p'>{oneListing.description}</p>
             </div>
             <div>
                 <h1 style={{marginTop: "3%", marginBottom: "1%"}} className='comments__heading'>Comments</h1>

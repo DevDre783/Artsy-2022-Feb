@@ -21,7 +21,7 @@ function ListingFormPage () {
     useEffect(() => {
         const validationErrors = [];
 
-        if (title.length < 8) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
+        if (title.length < 5) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
         if (description.length === 0) validationErrors.push("Please provide a brief description for your listing.")
         if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
         if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")

@@ -4,7 +4,7 @@ import { FaSmile } from "react-icons/fa";
 import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAstronaut } from "react-icons/fa";
 import "./Navigation.css"
 // import "../../public/profile-pic.jpeg"
 
@@ -44,7 +44,7 @@ function ProfileButton() {
         <i className="fas fa-bars" />
         {/* <i className="fas fa-user-circle" /> */}
         {/* <img className='profile__img' src='https://www.pngitem.com/pimgs/m/264-2647677_avatar-icon-human-user-avatar-svg-hd-png.png'></img> */}
-        <FaUserAlt className="profile__img" />
+        <FaUserAstronaut className="profile__img" />
       </button>
       {/* } */}
       {showMenu && (
