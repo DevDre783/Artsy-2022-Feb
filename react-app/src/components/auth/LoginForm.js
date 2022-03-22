@@ -29,6 +29,7 @@ const LoginForm = () => {
     if(!email.includes("@")) loginErrors.push("Please provide a valid Email");
     if (!password) loginErrors.push("Please provide your password")
 
+
     if (loginErrors.length > 0) {
       return setErrors(loginErrors)
     } else {
