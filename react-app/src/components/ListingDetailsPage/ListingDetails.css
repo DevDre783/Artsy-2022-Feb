@@ -212,8 +212,8 @@
 }
 
 .detail__titleAndEditBtn p {
-    font-size: 26pt;
-    font-family: 'Herr Von Muellerhoff', cursive;
+    font-size: 20pt;
+    font-family: 'Sofia', cursive;
 }
 
 .clearComment__btn:hover {
