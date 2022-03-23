@@ -19,7 +19,7 @@ const EditForm = ({ setShowModal }) => {
       const usernameErrors = []
 
       if (name.length < 4) usernameErrors.push("Username is too short.");
-
+      if (name.length > 20) usernameErrors.push("Username cannot be longer than 20 characters.");
       setErrors(usernameErrors);
 
     }, [name])
