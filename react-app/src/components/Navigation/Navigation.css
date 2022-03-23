@@ -48,7 +48,7 @@ body {
     position: fixed;
     top: 0;
     background-color: white;
-    box-shadow: 2px 5px 5px 5px rgba(36, 36, 36, 0.438);
+    box-shadow: 2px 5px 5px 5px rgba(100, 100, 100, 0.438);
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -166,7 +166,7 @@ body {
     align-items: center;
     border-radius: 50%;
     border: none;
-    height: 42px;
+    height: 75px;
     margin-left: 10%;
 }
 
@@ -227,9 +227,10 @@ body {
     margin-right: 0.5%;
     position: absolute;
     right: 0;
-    margin-top: 15%;
-    background-color: rgb(87, 87, 87);
-    border: rgb(109, 109, 109) 5px solid;
+    margin-top: 8%;
+    background-color: rgb(155, 155, 155);
+    border: rgb(94, 94, 94) 2px solid;
+    box-shadow: 0 3px 8px 2px rgba(104, 104, 104, 0.527);
 }
 
 .Dd-username {
