@@ -25,6 +25,7 @@ function ListingDetailsPage() {
         const listingTitleValidation = [];
 
         if(editListingTitle?.length < 5) listingTitleValidation.push("Title must be longer than 5 characters");
+        if(editListingTitle?.length > 40) listingTitleValidation.push("Title cannot be longer than 40 characters");
 
         setErrors(listingTitleValidation);
 

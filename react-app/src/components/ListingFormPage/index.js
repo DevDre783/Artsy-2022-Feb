@@ -22,10 +22,11 @@ function ListingFormPage () {
         const validationErrors = [];
 
         if (title.length < 5) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
+        if (title?.length > 40) validationErrors.push("Title cannot be longer than 40 characters");
         if (description.length === 0) validationErrors.push("Please provide a brief description for your listing.")
         if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
         if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
-        if(!url.match(/\.(jpeg|jpg|gif|png)$/) || !url.includes("https")) validationErrors.push("Not a Valid image URL")
+        if (!url.match(/\.(jpeg|jpg|gif|png)$/) || !url.includes("https")) validationErrors.push("Not a Valid image URL (Must be 'https' and jpeg, jpg, png)")
 
         setErrors(validationErrors);
 
