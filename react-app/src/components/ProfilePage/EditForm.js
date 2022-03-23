@@ -18,7 +18,7 @@ const EditForm = ({ setShowModal }) => {
     useEffect(() => {
       const usernameErrors = []
 
-      if (name.length < 4) usernameErrors.push("Username is too short.");
+      if (name.length < 4) usernameErrors.push("Username must be 4 or more characters");
       if (name.length > 20) usernameErrors.push("Username cannot be longer than 20 characters.");
       setErrors(usernameErrors);
 

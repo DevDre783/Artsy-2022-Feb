@@ -17,31 +17,26 @@ const SignUpForm = () => {
 
   useEffect(() => {
 
-  })
-
-  const handleClick = async (e) => {
-    e.preventDefault()
-
     const signupErrors = [];
 
     if(username.length > 20) signupErrors.push("Username cannot be longer than 20 characters.");
-    if(username.length < 4) signupErrors.push("Username must be longer.");
-    if(!username.length) signupErrors.push("Must provide a username.");
+    if(username.length < 4) signupErrors.push("Username must be 4 or more characters");
     if(!email.includes("@") || !email.includes(".com")) signupErrors.push("Please provide a valid Email.");
     // if(!email.length & !email.includes("@")) signupErrors.push("Must provide an email");
     if(!password) signupErrors.push("Please provide a Password.")
     if(password !== repeatPassword) signupErrors.push("Password did not match Confirm Password.")
 
-    if (signupErrors.length > 0) {
-      return setErrors(signupErrors)
-    } else {
-      await dispatch(sessionActions.signUp(username, email, password))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors)
-        });
-      history.push('/browse')
-    }
+    setErrors(signupErrors)
+
+  }, [username, email, password, repeatPassword])
+
+  const handleClick = async (e) => {
+    e.preventDefault()
+
+    await dispatch(sessionActions.signUp(username, email, password))
+
+    history.push('/browse')
+
   }
 
 
@@ -73,7 +68,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/browse' />;
+    return <Redirect to='/' />;
   }
 
   return (

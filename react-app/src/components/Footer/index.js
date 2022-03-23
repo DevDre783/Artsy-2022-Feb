@@ -12,6 +12,7 @@ function Footer () {
             <footer>
                 <div className="footer__content">
                     <a target="_blank" rel="noreferrer" href='https://github.com/DevDre783'><FaGithub className='github__icon'/></a>
+                    <p style={{color:"black"}}>Disclaimer: Digital Art photos on this website are not owned by this website.</p>
                     <a target="_blank" rel="noreferrer" href='https://www.linkedin.com/in/andres-soca-23852aab/'><FaLinkedin className='linkedIn__icon'/></a>
                 </div>
             </footer>

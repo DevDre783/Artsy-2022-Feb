@@ -167,7 +167,7 @@ function LoadedComments({ listingId, oneListing }) {
                         {comment.user_id == user.id ? <button
                         className='editComment__btn'
                             style={{ marginBottom: "5%", marginTop: "1%" }}
-                            onClick={ () => {
+                            onClick={() => {
                                 setCommentId(comment?.id)
                                 handleEditCommentForm(comment?.id)
                                 setEditCommentBody(comment?.body)
