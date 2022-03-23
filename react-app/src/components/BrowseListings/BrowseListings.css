@@ -36,11 +36,14 @@ body {
 .individual__listing {
     width: 30vw;
     margin-bottom: 10%;
-    box-shadow: 0 0 5px 5px rgb(156, 156, 156);
+    box-shadow: 0 0 5px 5px rgb(173, 173, 173);
+    transition-duration: 0.3s;
 }
 
 .individual__listing:hover {
+    box-shadow: 0 0 11px 6px rgb(189, 189, 189);
     transform: scale(1.02);
+    transition-duration: 0.3s;
 }
 
 .image {

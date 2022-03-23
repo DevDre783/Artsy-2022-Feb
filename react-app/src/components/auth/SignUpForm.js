@@ -25,8 +25,9 @@ const SignUpForm = () => {
     const signupErrors = [];
 
     if(username.length > 20) signupErrors.push("Username cannot be longer than 20 characters");
+    if(username.length < 4) signupErrors.push("Username must be longer than 4 characters");
     if(!username.length) signupErrors.push("Must provide a username");
-    if(!email.includes("@")) signupErrors.push("Please provide a valid Email");
+    if(!email.includes("@") || !email.includes(".com")) signupErrors.push("Please provide a valid Email");
     // if(!email.length & !email.includes("@")) signupErrors.push("Must provide an email");
     if(!password) signupErrors.push("Please provide a Password")
     if(password !== repeatPassword) signupErrors.push("Password did not match Confirm Password")
