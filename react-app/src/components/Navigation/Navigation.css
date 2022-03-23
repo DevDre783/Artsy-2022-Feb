@@ -366,3 +366,18 @@ body {
     font-size: 12pt;
     text-shadow: none;
 }
+
+@media only screen and (max-width: 2000px) {
+    .signin__btn {
+        margin-left: 0.5%;
+        cursor: pointer;
+        color: white;
+        font-size: 14pt;
+        border: 1px rgba(97, 97, 97, 0.863) solid;
+        border-radius: 5px;
+        background-color: rgb(112, 112, 112);
+        padding: 10px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+}

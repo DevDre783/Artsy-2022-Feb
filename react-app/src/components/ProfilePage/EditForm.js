@@ -12,9 +12,16 @@ const EditForm = ({ setShowModal }) => {
     const username = user.username
 
     const[name, setName] = useState(username)
+    const[errors, setErrors] = useState([])
     // const [showModal, setShowModal] = useState(prop);
 
     useEffect(() => {
+      const usernameErrors = []
+
+      if (name.length < 7) usernameErrors.push("Username is too short.");
+
+      setErrors(usernameErrors);
+
     }, [name])
 
     const handleSubmit = async (e) => {
@@ -28,14 +35,21 @@ const EditForm = ({ setShowModal }) => {
   return (
     <form>
       <h2 style={{marginLeft: "55.5%"}} className='editNicknameHeader'>Nickname</h2>
-      <div style={{marginLeft: "71%"}}>
+      <div style={{marginLeft: "71%", marginBottom: "10%"}}>
+      <div >
+        <ul style={{color: "white"}} className="listingForm__errors">
+            {errors.map(error => (
+                <li key={error}>{error}</li>
+                ))}
+        </ul>
+      </div>
       <input className='username__input' type='text'
       value={name}
       placeholder='Enter new username..'
       onChange={(e) => setName(e.target.value)}
       ></input>
       </div>
-      <button style={{marginLeft: "89.5%", marginTop: "15%"}} onClick={handleSubmit} className='submit__edit__form'>Submit</button>
+      <button style={{marginLeft: "89.5%", marginTop: "15%"}} onClick={handleSubmit} className='submit__edit__form' disabled={errors.length > 0}>Submit</button>
       <button style={{marginLeft: "93%", marginTop: "10%"}} className='submit__edit__form' onClick={() => setShowModal(false)}>close</button>
     </form>
   )

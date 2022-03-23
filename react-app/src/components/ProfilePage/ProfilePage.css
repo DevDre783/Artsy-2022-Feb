@@ -2,17 +2,6 @@
     box-sizing: border-box;
 }
 
-.profile__pic {
-    margin-left: 10%;
-    /* border-radius: 50%; */
-    width: 20px;
-    height: 20px;
-}
-
-.profile__pic:hover {
-    transform: scale(7.1);
-}
-
 body {
     margin: 0;
     letter-spacing: normal;
@@ -26,7 +15,7 @@ body {
     align-items: center;
     width: 40%;
     flex-direction: column;
-    margin-top: 6%;
+    margin-top: 8%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -36,17 +25,23 @@ body {
     margin-top: 10%;
     display: flex;
     width: 100%;
+    margin-left: 15%;
     justify-content: space-around;
     align-items: center;
 }
 
 .profile__pic {
+    margin-left: 10%;
+    /* border-radius: 50%; */
+    width: 20px;
+    height: 20px;
     /* transform: translateX(-600px); */
+    padding: 2px;
     transform: scale(7.0);
 }
 
 .profile__pic__container {
-    width: 25%;
+    width: 21.5%;
 }
 
 .change__profile__pic {
@@ -157,9 +152,10 @@ body {
 }
 
 .edit__profile__btn:hover {
+    cursor: pointer;
     transform: scale(0.97);
     background-color: rgba(44, 44, 44, 0.788);
-    color: black;
+    color: white;
 }
 
 .industry__category button:hover {
@@ -173,7 +169,7 @@ body {
 }
 
 .lower__container {
-    margin-top: 40%;
+    margin-top: 46%;
     /* margin-left: 1%; */
     text-align: left;
     width: 100%;
@@ -185,6 +181,9 @@ body {
     color: rgb(20, 122, 255);
 }
 
+.showMoreLessbtn:hover {
+    cursor: pointer;
+}
 
 
 /* Edit form modal */
@@ -200,6 +199,7 @@ body {
 }
 
 .username__input {
+    font-size: 10pt;
     padding: 10px;
     margin-bottom: 45%;
 }
@@ -207,12 +207,19 @@ body {
 .submit__edit__form {
     font-size: 14pt;
     font-family: 'Finger Paint', cursive;
-    color: rgb(192, 192, 192);
     background: none;
     border: none;
 }
 
 .submit__edit__form:hover {
-    color: rgb(255, 255, 255);
+    color: white;
+    transform: scale(1.05);
     cursor: pointer;
+}
+
+.image__container {
+    position: absolute;
+    height: 800px;
+    width: 800px;
+    z-index: -1;
 }
