@@ -26,7 +26,20 @@
     align-items: center;
     position: absolute;
     border-radius: 15px;
-    background-color: rgb(223, 41, 41);
+    background-color: rgb(204, 21, 21);
     height: 45%;
     width: 20.5%;
+    box-shadow: 0 0 6.5px 3px rgb(136, 136, 136);
   }
+
+  @media only screen and (max-width: 2000px) {
+    #modal-content {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      border-radius: 15px;
+      background-color: rgb(223, 41, 41);
+      height: 45%;
+      width: 27%;
+    }
+}

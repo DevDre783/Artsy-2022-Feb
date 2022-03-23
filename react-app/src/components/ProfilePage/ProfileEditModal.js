@@ -12,6 +12,7 @@ function EditProfile({ prop = false }) {
         display: 'none',
     }
 
+
     return (
         <>
             <button
