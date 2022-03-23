@@ -10,6 +10,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.image__container {
+    z-index: -1;
+    margin-top: 5%;
+    margin-right: 5.5%;
+    background-image: url("https://www.wallpaperbetter.com/wallpaper/57/332/925/minimalism-white-background-artwork-banksy-graffiti-men-flowers-selective-coloring-protestors-1080P-wallpaper-middle-size.jpg");
+    background-repeat: no-repeat;
+}
+
 .outer__container {
     display: flex;
     align-items: center;
