@@ -14,7 +14,7 @@ function LoadedComments({ listingId, oneListing }) {
     const user_id = user.id
     const comments = Object.values(useSelector(state => state?.comments));
 
-    const [commentId, setCommentId] = useState()
+    const [commentId, setCommentId] = useState();
     const [body, setBody] = useState('');
     const [editCommentBody, setEditCommentBody] = useState("comments original body goes here")
     const [errors, setErrors] = useState([]);
@@ -26,7 +26,6 @@ function LoadedComments({ listingId, oneListing }) {
         const validationErrors = [];
         const editValidationsErrors = [];
 
-        if (body.length === 0) validationErrors.push("Cannot submit an empty comment");
         if (body.length < 15) validationErrors.push("Comment must be more than 15 characters");
 
         if (editCommentBody.length < 15) editValidationsErrors.push("Editing comment must be more than 15 characters");
