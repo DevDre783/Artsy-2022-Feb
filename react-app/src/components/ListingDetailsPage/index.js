@@ -54,7 +54,11 @@ function ListingDetailsPage() {
         await dispatch(editingListing(listingId, editListingTitle))
         await dispatch(getOneListing(listingId))
 
-        setShowEditForm(false)
+        // if (!showEditForm) {
+        //     setShowEditForm(true)
+        // } else {
+        //     setShowEditForm(false)
+        // }
 
         history.push(`/browse`)
         await dispatch(getListings(listingId))
