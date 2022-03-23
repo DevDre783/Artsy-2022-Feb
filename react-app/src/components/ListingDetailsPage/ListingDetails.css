@@ -58,7 +58,7 @@
 
 .comments__heading {
     margin-left: 31%;
-    font-family: 'Finger Paint', cursive;
+    font-family: sans-serif;
 }
 
 .detail__titleAndEditBtn h2 {
@@ -116,14 +116,14 @@
 .edit__listing input {
     background: none;
     color: rgb(0, 0, 0);
-    background-color: rgba(128, 128, 128, 0.507);
+    background-color: rgba(97, 97, 97, 0.507);
     margin-top: 1%;
     padding: 7px;
     width: 11%;
 }
 
 .edit__listing input:focus {
-    color: black;
+    color: rgb(0, 0, 0);
     border: none;
 }
 

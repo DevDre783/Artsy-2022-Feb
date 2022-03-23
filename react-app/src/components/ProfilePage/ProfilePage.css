@@ -178,7 +178,7 @@ body {
 
 .lower__container {
     margin-top: 46%;
-    /* margin-left: 1%; */
+    margin-left: 10%;
     text-align: left;
     width: 100%;
 }
@@ -230,4 +230,9 @@ body {
     height: 800px;
     width: 800px;
     z-index: -1;
+}
+
+.footer__text {
+   margin-left: 4%;
+   margin-right: 13%;
 }
