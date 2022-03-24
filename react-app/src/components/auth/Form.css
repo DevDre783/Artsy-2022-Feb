@@ -107,6 +107,11 @@ input:-webkit-autofill{
     background-color: rgb(110, 110, 110);
 }
 
+.signin__form__btn:disabled {
+    background-color: rgb(49, 49, 49);
+    color: black;
+}
+
 
 @media only screen and (max-width: 2000px) {
     .form__container {

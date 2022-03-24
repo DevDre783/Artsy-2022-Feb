@@ -122,7 +122,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-            <button onClick={handleClick} className='signin__form__btn' type='submit'>Sign Up</button>
+            <button disabled={errors.length > 0} onClick={handleClick} className='signin__form__btn' type='submit'>Sign Up</button>
         </form>
         <p>Already a member? <Link to={'/login'}>Login</Link></p>
       </div>

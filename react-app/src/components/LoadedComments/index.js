@@ -33,9 +33,9 @@ function LoadedComments({ listingId, oneListing }) {
         setErrors(validationErrors);
         setEditErrors(editValidationsErrors);
 
-        dispatch(getListingComments(oneListing.id))
+        dispatch(getListingComments(oneListing?.id))
 
-    }, [dispatch, body, oneListing.id, editCommentBody])
+    }, [dispatch, body, oneListing?.id, editCommentBody])
 
 
     const handleSubmitComment = async (e) => {
