@@ -20,7 +20,6 @@ function ListingDetailsPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-
     useEffect(() => {
         const listingTitleValidation = [];
 
@@ -55,14 +54,7 @@ function ListingDetailsPage() {
         await dispatch(editingListing(listingId, editListingTitle))
         await dispatch(getOneListing(listingId))
 
-        // if (!showEditForm) {
-        //     setShowEditForm(true)
-        // } else {
-        //     setShowEditForm(false)
-        // }
-
-        history.push(`/browse`)
-        await dispatch(getListings(listingId))
+        setShowEditForm(false)
     }
 
     const handleDeleteListing = async () => {
@@ -70,9 +62,9 @@ function ListingDetailsPage() {
         await dispatch(deleteListings(oneListing.id))
     }
 
-    if (!oneListing) {
-        return <Redirect to={`/browse/${listingId}`}/>
-    }
+    // if (!oneListing) {
+    //     return <Redirect to={`/browse/${listingId}`}/>
+    // }
 
     const handleBrokenImg= (e) => {
         e.target.src = "https://bitsofco.de/content/images/2018/12/broken-1.png"
@@ -113,12 +105,12 @@ function ListingDetailsPage() {
                 </div>
             : null}
             <div className='description__area'>
-                <p className='note__header'>Note:</p><p className='description__p'>{oneListing.description}</p>
+                <p className='note__header'>Note:</p><p className='description__p'>{oneListing?.description}</p>
             </div>
             <div>
                 <h1 style={{marginTop: "3%", marginBottom: "1%"}} className='comments__heading'>Comments</h1>
                 <div className='comments__container' style={{ border: "1px grey solid", padding: "25px", width: "40%", height: "60%" }}>
-                    <LoadedComments listingId={oneListing.id} userId={user.id} oneListing={oneListing}/>
+                    <LoadedComments listingId={oneListing?.id} userId={user?.id} oneListing={oneListing}/>
                 </div>
             </div>
         </div>
