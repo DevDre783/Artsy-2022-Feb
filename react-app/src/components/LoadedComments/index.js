@@ -13,6 +13,7 @@ function LoadedComments({ listingId, oneListing }) {
     const user = useSelector(state => state.session.user);
     const user_id = user.id
     const comments = Object.values(useSelector(state => state?.comments));
+    comments.reverse()
 
     const [commentId, setCommentId] = useState();
     const [body, setBody] = useState('');
