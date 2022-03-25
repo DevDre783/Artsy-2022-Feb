@@ -6,7 +6,8 @@ import * as sessionActions from "../../store/session"
 import "./Form.css"
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [signingupErrors, setSigningupErrors] = useState([]);
+  const [errors, setErrors] = useState([])
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,29 +16,33 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const signupErrors = [];
+  //   const signupErrors = [];
+  //   const validationErrors = [];
 
-    if(username.length > 20) signupErrors.push("Username cannot be longer than 20 characters.");
-    if(username.length < 4) signupErrors.push("Username must be 4 or more characters");
-    if(!email.includes("@") || !email.includes(".com")) signupErrors.push("Please provide a valid Email.");
-    // if(!email.length & !email.includes("@")) signupErrors.push("Must provide an email");
-    if(!password) signupErrors.push("Please provide a Password.")
-    if(password !== repeatPassword) signupErrors.push("Password did not match Confirm Password.")
+  //   if(username.length > 20) signupErrors.push("Username cannot be longer than 20 characters.");
+  //   if(username.length < 4) signupErrors.push("Username must be 4 or more characters");
+  //   if(!email.includes("@") || !email.includes(".com")) signupErrors.push("Please provide a valid Email.");
+  //   // if(!email.length & !email.includes("@")) signupErrors.push("Must provide an email");
+  //   if(!password) signupErrors.push("Please provide a Password.")
+  //   if(password !== repeatPassword) signupErrors.push("Password did not match Confirm Password.")
 
-    setErrors(signupErrors)
+  //   // setSigningupErrors(signupErrors)
+  //   setErrors(validationErrors)
 
-  }, [username, email, password, repeatPassword])
+  // }, [user, username, email, password, repeatPassword])
 
-  const handleClick = async (e) => {
-    e.preventDefault()
+  // const handleClick = async (e) => {
+  //   e.preventDefault()
 
-    await dispatch(sessionActions.signUp(username, email, password))
 
-    history.push('/browse')
 
-  }
+  //   await dispatch(sessionActions.signUp(username, email, password))
+
+  //   history.push('/browse')
+
+  // }
 
 
   const onSignUp = async (e) => {
@@ -48,6 +53,9 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+      }else {
+        setErrors(["Password fields must match!"])
+        return
     }
   };
 
@@ -76,13 +84,18 @@ const SignUpForm = () => {
     <div className="background__container"></div>
       <div className='form__container'>
         <form onSubmit={onSignUp}>
-          <div className='form__top__text'>
-            <h1>Sign Up</h1>
           <div className='errors'>
             {errors.map((error) => (
               <li style={{color: "white"}} key={error}>{error}</li>
             ))}
           </div>
+          <div className='form__top__text'>
+            <h1>Sign Up</h1>
+          {/* <div className='errors'>
+            {signingupErrors.map((error) => (
+              <li style={{color: "white"}} key={error}>{error}</li>
+            ))}
+          </div> */}
           </div>
           <div>
             <input
@@ -122,7 +135,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-            <button disabled={errors.length > 0} onClick={handleClick} className='signin__form__btn' type='submit'>Sign Up</button>
+            <button onClick={onSignUp} className='signin__form__btn' type='submit'>Sign Up</button>
         </form>
         <p>Already a member? <Link to={'/login'}>Login</Link></p>
       </div>

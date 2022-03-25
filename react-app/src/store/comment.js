@@ -25,6 +25,7 @@ const delete_comment = (comment) => ({
 })
 
 export const getListingComments = (id) => async dispatch => {
+    // console.log("!!!!!!!!!!!!", id)
     const response = await fetch(`/api/comments/${id}`)
 
     if (response.ok) {
@@ -53,7 +54,7 @@ export const postComment = (user_id, listing_id, body) => async dispatch => {
 }
 
 export const editingComment = (id, commentId, body) => async dispatch => {
-    console.log("FROM EDIT THUNK", id, commentId, body)
+    // console.log("FROM EDIT THUNK", id, commentId, body)
     const response = await fetch(`/api/comments/edit`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -65,14 +66,14 @@ export const editingComment = (id, commentId, body) => async dispatch => {
 
     if (response.ok) {
         const edited_comment = await response.json();
-        console.log("FROM EDIT THUNK", edited_comment)
+        // console.log("FROM EDIT THUNK", edited_comment)
         dispatch(editComment(edited_comment));
         return edited_comment;
     }
 }
 
 export const deleteComment = (commentId, body) => async (dispatch) => {
-    console.log("DELETE COMMENT THUNK", commentId)
+    // console.log("DELETE COMMENT THUNK", commentId)
     const response = await fetch(`/api/comments/delete`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},

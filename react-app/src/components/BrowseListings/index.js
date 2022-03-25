@@ -8,7 +8,7 @@ import { getListings } from '../../store/listing';
 function BrowseListings() {
     const dispatch = useDispatch();
     const listings = Object.values(useSelector(state => state?.main_listings))
-    console.log("LISTINGS", listings)
+    // console.log("LISTINGS", listings)
 
 
     useEffect(() => {
@@ -31,9 +31,9 @@ function BrowseListings() {
                 <div className='listings__container'>
                     {listings?.map(listing => (
                         <div className='listing__container' key={listing?.id}>
-                            <h1 className='listing__title'>{listing?.title}</h1>
-                            <Link key={`${listing?.id}`} id='listingImgLink' className="listingImage" to={`/browse/${listing.id}`}>
-                                <img src={listing?.url} onError={handleBrokenImg} className="individual__listing"></img>
+                            <h1 key={listing?.id1} className='listing__title'>{listing?.title}</h1>
+                            <Link key={`${listing?.id1}`} id='listingImgLink' className="listingImage" to={`/browse/${listing.id}`}>
+                                <img key={listing?.id1} src={listing?.url} onError={handleBrokenImg} className="individual__listing"></img>
                             </Link>
                         </div>
                     ))}
