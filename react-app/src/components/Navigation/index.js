@@ -34,7 +34,7 @@ function Navbar({ isLoaded }) {
       {user ? null :
       <>
         <div className='logo__container'>
-          <Link to={`/`}><h1>Artsy</h1></Link><FaPalette style={{color: "red"}}/>
+          <Link to={`/browse`}><h1>Artsy</h1></Link><FaPalette style={{color: "red"}}/>
         </div>
         <div className=''>
 
