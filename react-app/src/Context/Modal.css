@@ -32,7 +32,7 @@
     box-shadow: 0 0 6.5px 3px rgb(136, 136, 136);
   }
 
-  @media only screen and (max-width: 2000px) {
+  @media only screen and (min-width: 450px) and (max-width: 2000px) {
     #modal-content {
       display: flex;
       align-items: center;
@@ -40,6 +40,18 @@
       border-radius: 15px;
       background-color: rgb(223, 41, 41);
       height: 45%;
-      width: 27%;
+      width: 35%;
     }
 }
+
+/* @media only screen and (min-width: 750px) {
+  #modal-content {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 15px;
+    background-color: rgb(223, 41, 41);
+    height: 48%;
+    width: 40%;
+  }
+} */
