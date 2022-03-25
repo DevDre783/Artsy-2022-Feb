@@ -58,7 +58,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
-        <ProtectedRoute path='/' >
+        <ProtectedRoute path='/' exact={true}>
           <BrowseListings/>
         </ProtectedRoute>
         <Route>
