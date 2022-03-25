@@ -113,9 +113,9 @@ export const signUp = (username, email, password) => async (dispatch) => {
 }
 
 export const handleEdit = (username, id) => async (dispatch) => {
-  console.log('store')
-  console.log(username)
-  console.log(id)
+  // console.log('store')
+  // console.log(username)
+  // console.log(id)
   const response = await fetch(`/api/users/edit/${id}`, {
     method: 'PATCH',
     body: JSON.stringify({

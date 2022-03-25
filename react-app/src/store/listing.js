@@ -71,7 +71,7 @@ export const postListing = (user_id, title, url, description) => async dispatch 
 }
 
 export const editingListing = (id, title, user_id) => async dispatch => {
-    console.log("FROM EDIT THUNK", typeof (+id))
+    // console.log("FROM EDIT THUNK", typeof (+id))
     const response = await fetch(`/api/browse/${+id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
