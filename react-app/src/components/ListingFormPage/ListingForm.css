@@ -174,11 +174,11 @@ textarea {
 /* MEDIA QUERIES */
 
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (min-width: 450px) and (max-width: 2000px) {
     .listingForm__errors {
         position: absolute;
         z-index: 1;
-        margin-top: 16%;
+        margin-top: 14%;
         margin-left: -22%;
     }
 
@@ -187,6 +187,20 @@ textarea {
         z-index: -1;
         height: 900px;
         width: 1400px;
-        margin-left: -10%;
+        margin-left: -16%;
+    }
+
+    .form__container1 {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.746);
+        border-radius: 5px;
+        height: 750px;
+        width: 30%;
+        display: flex;
+        margin-left: 40%;
+        margin-top: 10.5%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
