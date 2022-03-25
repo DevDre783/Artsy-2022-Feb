@@ -1,4 +1,4 @@
-#modal {
+  #modal {
     position: fixed;
     top: 0;
     right: 0;
@@ -43,15 +43,3 @@
       width: 35%;
     }
 }
-
-/* @media only screen and (min-width: 750px) {
-  #modal-content {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    border-radius: 15px;
-    background-color: rgb(223, 41, 41);
-    height: 48%;
-    width: 40%;
-  }
-} */

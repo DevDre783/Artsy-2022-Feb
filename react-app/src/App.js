@@ -58,9 +58,8 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
-        <ProtectedRoute path='/' exact={true} >
-          <h1 style={{marginTop: "18%", marginLeft: "38%", fontSize: "50pt"}}>404: Page Not Found</h1>
-          <img style={{marginLeft: "43%", marginTop: "2%"}} src="https://www.computerhope.com/jargon/e/error.png"></img>
+        <ProtectedRoute path='/' >
+          <BrowseListings/>
         </ProtectedRoute>
         <Route>
           <h1 style={{marginTop: "18%", marginLeft: "38%", fontSize: "50pt"}}>404: Page Not Found</h1>
