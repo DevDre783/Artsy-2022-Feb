@@ -20,8 +20,16 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+def username_length(form, field):
+    # Checking if username is already in use
+    username = field.data
+
+    if len(username) > 20:
+        raise ValidationError('Username is too long.')
+
+
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
+        'username', validators=[DataRequired(), username_exists, username_length])
     email = StringField('email', validators=[DataRequired(), user_exists, Email(granular_message=True)])
     password = StringField('password', validators=[DataRequired()])

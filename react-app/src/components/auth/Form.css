@@ -74,11 +74,11 @@ input:-webkit-autofill{
 .form__container {
     background-color: rgba(0, 0, 0, 0.746);
     border-radius: 5px;
-    height: 850px;
-    width: 25%;
+    height: 750px;
+    width: 22%;
     display: flex;
-    margin-left: 40%;
-    margin-top: 10%;
+    margin-left: 39%;
+    margin-top: 11%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
