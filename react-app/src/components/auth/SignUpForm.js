@@ -86,7 +86,7 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp}>
           <div className='errors'>
             {errors.map((error) => (
-              <li style={{color: "white"}} key={error}>{error}</li>
+              <li style={{color: "white", fontSize: "14pt"}} key={error}>{error}</li>
             ))}
           </div>
           <div className='form__top__text'>

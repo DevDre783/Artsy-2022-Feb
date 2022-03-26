@@ -67,13 +67,13 @@ const LoginForm = () => {
     <div className="background__container"></div>
       <div className='form__container'>
         <form onSubmit={onLogin}>
-          <div className='form__top__text'>
-            <h1>Sign In</h1>
           <div>
             {errors.map((error) => (
-              <li style={{color: "white"}} key={error}>{error}</li>
+              <li style={{color: "white", fontSize: "14pt"}} key={error}>{error}</li>
             ))}
           </div>
+          <div className='form__top__text'>
+            <h1>Sign In</h1>
           </div>
           <div>
             <input
