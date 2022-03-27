@@ -25,7 +25,7 @@ def username_length(form, field):
     username = field.data
 
     if len(username) > 20:
-        raise ValidationError('Username is too long.')
+        raise ValidationError('Cannot be more than 20 characters.')
 
 
 class SignUpForm(FlaskForm):

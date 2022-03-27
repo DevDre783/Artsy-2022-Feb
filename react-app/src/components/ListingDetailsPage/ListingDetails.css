@@ -54,6 +54,12 @@
     padding-right: 12px;
     text-align: left;
     max-width: 545px;
+    inline-size: 525px;
+}
+
+.the__comment {
+    inline-size: 500px;
+    overflow-wrap: break-word;
 }
 
 .comments__heading {
