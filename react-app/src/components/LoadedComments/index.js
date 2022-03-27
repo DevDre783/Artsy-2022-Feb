@@ -141,7 +141,7 @@ function LoadedComments({ listingId, oneListing }) {
                     <div>
                         <h3><FaUserAstronaut style={{marginRight: "1%", marginLeft: "0.5%", transform: "scale(1.3)"}} /> {comment.username}</h3>
                         <div className='comment__div' style={{ border: "1px grey solid", height: "60%" }}>
-                            <p key={comment.id}>{comment.body}</p>
+                            <p className='the__comment' key={comment.id}>{comment.body}</p>
                         </div>
 
                         {/* {showEditForm && (

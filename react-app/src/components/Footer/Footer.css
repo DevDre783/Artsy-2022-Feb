@@ -43,3 +43,19 @@
 .linkedIn__icon:hover {
     color: white;
 }
+
+
+@media only screen and (max-width: 2000px) {
+    .footer__container {
+        border-top: 1px solid rgba(82, 82, 82, 0.5);
+        box-shadow: 2px 5px 5px 5px rgba(36, 36, 36, 0.5);
+        height: 8%;
+        color: white;
+        background-color: rgba(109, 109, 109, 0.493);
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        align-items: center;
+        z-index: 1;
+    }
+}
