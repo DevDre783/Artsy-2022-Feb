@@ -274,3 +274,18 @@
 .editTitle__errors {
     margin-top: 0.5%;
 }
+
+@media only screen and (min-width: 450px) and (max-width: 2000px) {
+    .edit__comment {
+        margin-left: auto;
+    }
+
+    .editComment__submit {
+        border: 1px solid grey;
+        border-radius: 10px;
+        background: none;
+        background-color: none;
+        margin-left: 77%;
+        margin-right: 1%;
+    }
+}
