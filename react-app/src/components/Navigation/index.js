@@ -6,6 +6,7 @@ import * as sessionActions from '../../store/session';
 import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPalette } from "react-icons/fa";
+import SearchBar from '../SearchBar';
 
 
 
@@ -71,6 +72,7 @@ function Navbar({ isLoaded }) {
          {!user ? null : <div className='share__tab'><NavLink to={`/listing-form`} style={{color: "red", marginRight: "50px"}}>Share your work</NavLink></div>}
          {!user ? null :<ProfileButton />}
         </div>
+        <SearchBar />
     </nav>
   );
 }
