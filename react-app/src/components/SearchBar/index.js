@@ -6,8 +6,8 @@ import "./SearchBar.css"
 
 
 function SearchBar() {
-    const dispatch = useDispatch();
     const listings = Object.values(useSelector(state => state?.main_listings));
+    console.log()
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
@@ -16,13 +16,15 @@ function SearchBar() {
     })
 
     useEffect(() => {
+        setSearchTerm("")
+    }, [])
 
+    useEffect(() => {
         if (searchTerm === ""){
             return setSearchTerm("")
         } else {
             setSearchTerm(searchTerm)
         }
-
 
         const filteredResult = allTitles.filter(title => {
             return (title.includes(searchTerm.toUpperCase()) || title.toUpperCase().includes(searchTerm.toUpperCase()))
@@ -47,7 +49,13 @@ function SearchBar() {
                 {searchResults.map((title) => (
                     <>
                     {console.log("WOOO", Object.values(searchResults))}
-                        <NavLink onClick={() => setSearchTerm("")} className="test" to={`/browse/${title[0]}`}> {title} </NavLink>
+                    {listings.map(listing => (
+                        <>
+                            {listing.title === title ?
+                                <NavLink onClick={() => setSearchTerm("")} className="test" to={`/browse/${listing.id}`}> {title} </NavLink>
+                            :null}
+                        </>
+                    ))}
                     </>
                     ))}
                 </>
