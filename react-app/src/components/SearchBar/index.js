@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {Link, NavLink, useParams} from 'react-router-dom'
-import { getListings, getOneListing } from '../../store/listing';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import "./SearchBar.css"
 
 
@@ -20,7 +19,8 @@ function SearchBar() {
     }, [])
 
     useEffect(() => {
-        if (searchTerm === ""){
+
+        if (searchTerm === "") {
             return setSearchTerm("")
         } else {
             setSearchTerm(searchTerm)
@@ -37,11 +37,10 @@ function SearchBar() {
     }, [searchTerm])
 
 
-
     return (
         <div className='search_container'>
         <div className="search__bar">
-            <input type="text" value={searchTerm} placeholder="Search Arsty.." onChange={(e)=>setSearchTerm(e.target.value)}></input>
+            <input type="text" value={searchTerm} placeholder="&#x1F50E;&#xFE0E; Search Artsy..." onChange={(e)=>setSearchTerm(e.target.value)}></input>
         </div>
         <div id="search_results">
             {searchTerm && (
@@ -51,9 +50,9 @@ function SearchBar() {
                     {console.log("WOOO", Object.values(searchResults))}
                     {listings.map(listing => (
                         <>
-                            {listing.title === title ?
+                            { listing.title === title ?
                                 <NavLink onClick={() => setSearchTerm("")} className="test" to={`/browse/${listing.id}`}> {title} </NavLink>
-                            :null}
+                            :null }
                         </>
                     ))}
                     </>
