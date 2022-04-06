@@ -72,7 +72,7 @@ function Navbar({ isLoaded }) {
          {!user ? null : <div className='share__tab'><NavLink to={`/listing-form`} style={{color: "red", marginRight: "50px"}}>Share your work</NavLink></div>}
          {!user ? null :<ProfileButton />}
         </div>
-        <SearchBar />
+        {!user ? null :<SearchBar />}
     </nav>
   );
 }
