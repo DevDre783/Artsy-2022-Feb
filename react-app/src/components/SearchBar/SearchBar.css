@@ -12,12 +12,16 @@
 .search__bar input[type="text"], textarea {
     background-color : #d1d1d142;
     color: black;
-  }
+}
+
+.search__bar input[type="text"] {
+    border: 1.5px solid grey;
+}
 
 .search_container {
     display: flex;
     margin-bottom: 0.3%;
-    /* width: 3.5%; */
+    margin-right: -8%;
 }
 
 
@@ -28,7 +32,7 @@
     overflow: hidden;
     list-style: none;
     background-color: gray;
-    width: 16.5%;
+    width: 14.5%;
     position: absolute;
     margin-top: 2%;
 }
@@ -38,14 +42,14 @@
     text-decoration: none;
     color: white;
     border: 1px solid white;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 7px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
     text-align: left;
 }
 
 #search_results > a {
-    font-size: 12pt;
+    font-size: 13pt;
 }
 
 .test:hover {
