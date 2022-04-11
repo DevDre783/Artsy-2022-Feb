@@ -10,14 +10,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.image__container {
-    z-index: -1;
-    margin-top: 5%;
-    margin-right: 5.5%;
-    background-image: url("https://www.wallpaperbetter.com/wallpaper/57/332/925/minimalism-white-background-artwork-banksy-graffiti-men-flowers-selective-coloring-protestors-1080P-wallpaper-middle-size.jpg");
-    background-repeat: no-repeat;
-}
-
 .outer__container {
     display: flex;
     align-items: center;
@@ -177,7 +169,8 @@ body {
 }
 
 .lower__container {
-    margin-top: 46%;
+    /* margin-top: 5%; */
+    margin-bottom: 15%;
     margin-left: 10%;
     text-align: left;
     width: 100%;
@@ -225,16 +218,58 @@ body {
     cursor: pointer;
 }
 
-.image__container {
+/* .image__container {
     position: absolute;
     height: 800px;
     width: 800px;
     z-index: -1;
-}
+} */
 
 .footer__text {
    margin-left: 4%;
    margin-right: 13%;
+}
+
+/* USER LISTINGS */
+
+
+.container {
+    height: 100%;
+    width: 100%;
+    margin-right: 92%;
+    margin-top: 18%;
+    /* position: absolute; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    /* padding-left: 12%; */
+    column-gap: 35px;
+    row-gap: 35px;
+}
+
+.the__image {
+    box-shadow: 0px 0px 6.5px 2.5px rgba(0, 0, 0, 0.52);
+    /* margin: auto; */
+    /* display: block; */
+    transition-duration: 0.3s;
+    /* margin-left: 7px;
+    margin-right: 7px; */
+    width: 465px;
+    height: 315px;
+    transition-duration: 0.3s;
+}
+
+.the__image:hover {
+    box-shadow: 0 0 11px 6px rgb(189, 189, 189);
+    transform: scale(1.02);
+    transition-duration: 0.3s;
+}
+
+.the__title {
+    font-size: 17pt;
 }
 
 
