@@ -7,6 +7,7 @@ import { deleteListings, editingListing, getListings, getOneListing, postListing
 import LoadedComments from '../LoadedComments';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import './ListingDetails.css'
+import StarRating from '../StarRating';
 
 
 function ListingDetailsPage() {
@@ -76,6 +77,7 @@ function ListingDetailsPage() {
                 <div className='listing__content'>
                     <img src={oneListing.url} onError={handleBrokenImg}></img>
                     <div className='detail__titleAndEditBtn'>
+                    <StarRating />
                         <h2 className='title__header'>{oneListing.title }{user.id == oneListing.user_id ? <button className='edit__btn' onClick={handleEditListingForm} disabled={errors.length > 0}><FaEdit/></button> : null}
                             {user.id == oneListing.user_id ? <button className='delete__btn' onClick={handleDeleteListing}><FaTrashAlt/></button> : null}
                         </h2>

@@ -1,0 +1,17 @@
+.rating_container {
+    margin-top: 1%;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+/*
+yellow: #ffc107
+gray: #e4e5e9
+*/
