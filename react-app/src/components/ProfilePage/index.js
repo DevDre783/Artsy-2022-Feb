@@ -19,6 +19,9 @@ function ProfileDisplay({ setShowModal }) {
         dispatch(getListings(listings))
     }, [])
 
+    const handleBrokenImg= (e) => {
+        e.target.src = "https://bitsofco.de/content/images/2018/12/broken-1.png"
+    }
 
     const text = "Art in a period of widely-perceived global crisis can never be the same as art in more stable times. Placid ripples of lake water on canvas may reflect the deadly poison of factory waste. A photograph of a family dinner may convey messages about the millions for whom half an egg is a mere fantasy. A tender voice singing a lullaby may compel us to remember the massive nuclear attack that could occur at any moment. Artists need audiences. More fundamentally, artists need people to love and be loved by in turn. Artists need landscapes, dreams, and ideas. Just like other beings, artists need earth to stand on, water to drink, and air to breathe. Artists need the world; without the world there can be no art, no artist. Thus global survival is the primary issue for artists, just as it is for all other human beings. We could try to ignore the terrifying situation in which we have been living since the onset of the nuclear arms race. We could try to regard art as separate from our political concerns. We could try to deny art as a tool for social change. Art could remain innocently pleasing. But we cannot, in the end, escape from reality; we need to put out messages of our utmost concern to those we care for. Many artists have started working with global awareness, and I feel encouraged by being a part of an invisible community of socially engaged artists."
 
@@ -50,7 +53,7 @@ function ProfileDisplay({ setShowModal }) {
                             <div className='' key={listing?.id}>
                                 <h1 key={listing?.id1} className='the__title'>{listing?.title}</h1>
                                 <Link key={`${listing?.id1}`} id='image__holder' to={`/browse/${listing?.id}`}>
-                                    <img key={listing?.id1} src={listing?.url} className="the__image"></img>
+                                    <img onError={handleBrokenImg} key={listing?.id1} src={listing?.url} className="the__image"></img>
                                 </Link>
                             </div>
                     :null}
