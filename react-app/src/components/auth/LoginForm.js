@@ -58,6 +58,11 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const handleClick = async (e) => {
+    await dispatch(sessionActions.login('demo@aa.io', 'password'))
+    history.push('/browse')
+  }
+
   if (user) {
     return <Redirect to='/browse' />;
   }
@@ -69,7 +74,7 @@ const LoginForm = () => {
         <form onSubmit={onLogin}>
           <div>
             {errors.map((error) => (
-              <li style={{color: "white", fontSize: "14pt"}} key={error}>{error}</li>
+              <li style={{color: "red", fontSize: "14pt"}} key={error}>{error}</li>
             ))}
           </div>
           <div className='form__top__text'>
@@ -94,6 +99,8 @@ const LoginForm = () => {
             />
           </div>
             <button className='signin__form__btn' type='submit'>Sign In</button>
+            <h3 style={{color: "white", marginLeft: "46.5%", marginBottom: "10%"}}>or</h3>
+            <Link to={'/browse'}><button onClick={handleClick} className='signin__form__btn'>Demo</button></Link>
         </form>
         <p>New to Artsy? <Link to={'/sign-up'}>Sign up now.</Link></p>
       </div>

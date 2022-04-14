@@ -11,6 +11,7 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -25,13 +26,12 @@ const SignUpForm = () => {
   //   if(username.length < 4) signupErrors.push("Username must be 4 or more characters");
   //   if(!email.includes("@") || !email.includes(".com")) signupErrors.push("Please provide a valid Email.");
   //   // if(!email.length & !email.includes("@")) signupErrors.push("Must provide an email");
-  //   if(!password) signupErrors.push("Please provide a Password.")
   //   if(password !== repeatPassword) signupErrors.push("Password did not match Confirm Password.")
 
   //   // setSigningupErrors(signupErrors)
   //   setErrors(validationErrors)
 
-  // }, [user, username, email, password, repeatPassword])
+  // }, [password])
 
   // const handleClick = async (e) => {
   //   e.preventDefault()
@@ -86,7 +86,7 @@ const SignUpForm = () => {
         <form onSubmit={onSignUp}>
           <div className='errors'>
             {errors.map((error) => (
-              <li style={{color: "white", fontSize: "14pt"}} key={error}>{error}</li>
+              <li style={{color: "red", fontSize: "14pt"}} key={error}>{error}</li>
             ))}
           </div>
           <div className='form__top__text'>

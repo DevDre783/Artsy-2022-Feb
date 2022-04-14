@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { getListings } from '../../store/listing';
 import "./SearchBar.css"
 
 
 function SearchBar() {
+    const dispatch = useDispatch()
     const listings = Object.values(useSelector(state => state?.main_listings));
     console.log()
     const [searchTerm, setSearchTerm] = useState("");
@@ -20,6 +22,8 @@ function SearchBar() {
 
     useEffect(() => {
 
+        dispatch(getListings(listings))
+
         if (searchTerm === "") {
             return setSearchTerm("")
         } else {
@@ -34,7 +38,7 @@ function SearchBar() {
 
         setSearchResults(finalResult)
 
-    }, [searchTerm])
+    }, [searchTerm, dispatch])
 
 
     return (
