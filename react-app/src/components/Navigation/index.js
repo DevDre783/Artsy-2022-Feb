@@ -18,10 +18,10 @@ function Navbar({ isLoaded }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleClick = async (e) => {
-      await dispatch(sessionActions.login('demo@aa.io', 'password'))
-      history.push('/browse')
-  }
+  // const handleClick = async (e) => {
+  //     await dispatch(sessionActions.login('demo@aa.io', 'password'))
+  //     history.push('/browse')
+  // }
 
   const handleLogout = async () => {
     await dispatch(sessionActions.logout());
@@ -41,9 +41,10 @@ function Navbar({ isLoaded }) {
 
         </div>
         <div className='right__container'>
-          <div>
-            <Link to={"/login"}><button className='signin__btn'>Sign In</button></Link><Link to={'/browse'}><button onClick={handleClick} className='signin__btn'>Demo</button></Link>
+          <div className='buttons'>
+            <Link to={"/login"}><button className='signin__btn'>Sign In</button></Link>
           </div>
+            {/* <Link to={'/browse'}><button onClick={handleClick} className='demo__btn'>Demo</button></Link> */}
           <div className='right-nav'>
             <div className='profile-icon'>{isLoaded}</div>
           </div>

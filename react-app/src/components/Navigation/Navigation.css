@@ -44,6 +44,7 @@ body {
 }
 
 .navbar {
+    width: 100vw;
     z-index: 99;
     position: fixed;
     top: 0;
@@ -126,23 +127,6 @@ body {
     margin-top: 3%;
     width: 148%;
     background-color: rgb(87, 87, 87);
-}
-
-#learn__container {
-    position: absolute;
-    top: 125%;
-    padding: 0;
-    z-index: 1000;
-    min-height: 90px;
-}
-
-#whoweare__container {
-    position: absolute;
-    top: 125%;
-    padding: 0;
-    z-index: 1000;
-    min-height: 221px;
-    height: 16%;
 }
 
 .profile-menu {
@@ -341,6 +325,23 @@ body {
     background-color: rgb(83, 83, 83);
 }
 
+.demo__btn {
+    margin-left: 8%;
+    cursor: pointer;
+    color: white;
+    font-size: 14pt;
+    border: 1px rgba(97, 97, 97, 0.863) solid;
+    border-radius: 5px;
+    background-color: rgb(112, 112, 112);
+    padding: 10px;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+.demo__btn:hover {
+    background-color: rgb(83, 83, 83);
+}
+
 .share__tab a {
     display: flex;
     flex-direction: row;
@@ -367,7 +368,11 @@ body {
     text-shadow: none;
 }
 
-@media only screen and (max-width: 2000px) {
+.buttons {
+    width: 100%;
+}
+
+/* @media only screen and (max-width: 2000px) {
     .signin__btn {
         margin-left: 0.5%;
         cursor: pointer;
@@ -379,5 +384,41 @@ body {
         padding: 10px;
         padding-right: 16px;
         padding-left: 16px;
+    }
+} */
+
+@media only screen and (min-width: 250px) and (max-width:2500px) {
+
+    .signin__btn {
+        cursor: pointer;
+        color: white;
+        font-size: 14pt;
+        border: 1px rgba(97, 97, 97, 0.863) solid;
+        border-radius: 5px;
+        background-color: rgb(112, 112, 112);
+        padding: 10px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .demo__btn {
+        
+        cursor: pointer;
+        color: white;
+        font-size: 14pt;
+        border: 1px rgba(97, 97, 97, 0.863) solid;
+        border-radius: 5px;
+        background-color: rgb(112, 112, 112);
+        padding: 10px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    .signin__btn:hover {
+        background-color: rgb(83, 83, 83);
+    }
+
+    .demo__btn:hover {
+        background-color: rgb(83, 83, 83);
     }
 }
