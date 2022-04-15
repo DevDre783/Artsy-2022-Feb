@@ -16,7 +16,7 @@ const loadOne = (listing) => {
     }
 };
 
-const addNewListing = listing => ({
+export const addNewListing = listing => ({
     type: ADD_ONE,
     listing
 })

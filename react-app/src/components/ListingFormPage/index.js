@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom';
-import { postListing } from '../../store/listing';
+import { addNewListing, postListing } from '../../store/listing';
 import './ListingForm.css'
 
 
@@ -27,8 +27,8 @@ function ListingFormPage () {
         if (title.length < 5) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
         if (title?.length > 40) validationErrors.push("Title cannot be longer than 40 characters");
         if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
-        // if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
-        // if (!url.match(/\.(jpeg|jpg|gif|png)$/) || !url.includes("https")) validationErrors.push("Not a Valid image URL (Must be 'https' and jpeg, jpg, png)")
+        // if (image.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
+        // if (!url.match(/\.(jpeg|jpg|gif|png)$/)) validationErrors.push("Not a Valid image (Must be jpeg, jpg, png)")
 
         setErrors(validationErrors);
 
@@ -55,7 +55,9 @@ function ListingFormPage () {
         });
 
         if (res.ok) {
-            await res.json();
+            const newListing = await res.json();
+            dispatch(addNewListing(newListing))
+            history.push("/browse")
             setImageLoading(false);
         }
         else {
