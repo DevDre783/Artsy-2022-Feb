@@ -99,7 +99,7 @@ const LoginForm = () => {
             />
           </div>
             <button className='signin__form__btn' type='submit'>Sign In</button>
-            <h3 style={{color: "white", marginLeft: "46.5%", marginBottom: "10%"}}>or</h3>
+            <h2 style={{color: "white", marginLeft: "46.5%", marginBottom: "10%"}}>or</h2>
             <Link to={'/browse'}><button onClick={handleClick} className='signin__form__btn'>Demo</button></Link>
         </form>
         <p>New to Artsy? <Link to={'/sign-up'}>Sign up now.</Link></p>
