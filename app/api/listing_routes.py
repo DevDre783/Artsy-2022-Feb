@@ -31,10 +31,11 @@ def create_listing():
         print("HELLO ???", request.files['url'])
         return {"errors": "image required"}, 400
 
-    # user_id = request.json['user_id']
-    # title = request.json['title']
+    # print("--------------", request.form['user_id'])
+    user_id = request.form['user_id']
+    title = request.form['title']
     image = request.files['url']
-    # description = request.json['description']
+    description = request.form['description']
 
     if not allowed_file(image.filename):
         print("!!!!!!!!!!!!!!!!!!!")
