@@ -11,15 +11,19 @@ import './ProfilePage.css';
 
 function ProfileDisplay({ setShowModal }) {
     const dispatch = useDispatch();
+    const defaultValue = "black"
     const user = useSelector(state => state.session.user)
     const listings = Object.values(useSelector(state => state?.main_listings))
+    const [color, setColor] = useState(localStorage.getItem("color"));
+    // const [state, setState] = useState(localStorage.getItem(color))
     const [showMore, setShowMore] = useState(false);
 
     useEffect(() => {
         dispatch(getListings(listings))
+        // localStorage.setItem(color, state)
     }, [])
 
-    const handleBrokenImg= (e) => {
+    const handleBrokenImg = (e) => {
         e.target.src = "https://bitsofco.de/content/images/2018/12/broken-1.png"
     }
 
@@ -31,7 +35,36 @@ function ProfileDisplay({ setShowModal }) {
             <div className='top__container'>
                 <div className='profile__pic__container'>
                     <div>
-                        <FaUserAstronaut className='profile__pic' />
+                        <FaUserAstronaut className='profile__pic' color={color} />
+                    </div>
+                    <div id='change__theme__container'>
+                      <div className='color__palette'>
+                        <div className='color1__container'>
+                          <button onClick={() => {
+                              setColor("rgb(30, 30, 218)")
+                              localStorage.setItem("color", "rgb(30, 30, 218)")}} id='theme__color__btn1' className='color1'></button>
+                        </div>
+                        <div  className='color2__container'>
+                          <button onClick={() => {
+                              setColor("rgb(0, 167, 0)")
+                              localStorage.setItem("color", "rgb(0, 167, 0)")}} id='theme__color__btn2' className='color2'></button>
+                        </div>
+                        <div className='color3__container'>
+                          <button onClick={() => {
+                              setColor("rgb(223, 22, 206)")
+                              localStorage.setItem("color", "rgb(223, 22, 206)")}} id='theme__color__btn3' className='color3'></button>
+                        </div>
+                        <div className='color4__container'>
+                          <button onClick={() => {
+                              setColor("rgb(235, 16, 16)")
+                              localStorage.setItem("color", "rgb(235, 16, 16)")}} id='theme__color__btn4' className='color4'></button>
+                        </div>
+                        <div className='color5__container'>
+                          <button onClick={() => {
+                              setColor("rgb(219, 204, 41)")
+                              localStorage.setItem("color", "rgb(219, 204, 41)")}} id='theme__color__btn5' className='color5'></button>
+                        </div>
+                      </div>
                     </div>
                 </div>
                 <div className='user__info__display'>
@@ -49,14 +82,14 @@ function ProfileDisplay({ setShowModal }) {
             <div className='container'>
                 {listings.map(listing => (
                     <>
-                    {listing?.user_id === user?.id ?
+                        {listing?.user_id === user?.id ?
                             <div className='' key={listing?.id}>
                                 <h1 key={listing?.id1} className='the__title'>{listing?.title}</h1>
                                 <Link key={`${listing?.id1}`} id='image__holder' to={`/browse/${listing?.id}`}>
                                     <img onError={handleBrokenImg} key={listing?.id1} src={listing?.url} className="the__image"></img>
                                 </Link>
                             </div>
-                    :null}
+                            : null}
                     </>
                 ))}
             </div>
