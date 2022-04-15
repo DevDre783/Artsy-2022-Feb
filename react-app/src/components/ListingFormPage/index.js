@@ -18,14 +18,17 @@ function ListingFormPage () {
     const user = useSelector(state => state?.session?.user);
     const user_id = user.id
 
+    const [image, setImage] = useState('');
+    const [imageLoading, setImageLoading] = useState(false);
+
     useEffect(() => {
         const validationErrors = [];
 
         if (title.length < 5) validationErrors.push("Must provide a title longer than 5 characters for your listing.");
         if (title?.length > 40) validationErrors.push("Title cannot be longer than 40 characters");
         if (description.length < 50) validationErrors.push("Description is too short. Please provide some more detail.")
-        if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
-        if (!url.match(/\.(jpeg|jpg|gif|png)$/) || !url.includes("https")) validationErrors.push("Not a Valid image URL (Must be 'https' and jpeg, jpg, png)")
+        // if (url.length > 500) validationErrors.push("Url CANNOT be longer than 500 characters..")
+        // if (!url.match(/\.(jpeg|jpg|gif|png)$/) || !url.includes("https")) validationErrors.push("Not a Valid image URL (Must be 'https' and jpeg, jpg, png)")
 
         setErrors(validationErrors);
 
@@ -35,9 +38,41 @@ function ListingFormPage () {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        dispatch(postListing(user_id, title, url, description))
-        history.push("/browse")
+        const formData = new FormData();
+        formData.append("user_id", user_id);
+        formData.append("url", image);
+        formData.append("title", title);
+        formData.append("description", description);
+        console.log("HIIIII", Object.fromEntries(formData))
+
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+
+        const res = await fetch('/api/browse/listing-form', {
+            method: "POST",
+            body: formData,
+        });
+
+        if (res.ok) {
+            await res.json();
+            setImageLoading(false);
+        }
+        else {
+            setImageLoading(false);
+            // a real app would probably use more advanced
+            // error handling
+            console.log("error");
+        }
+
+        // dispatch(postListing(user_id, title, image, description))
+        // history.push("/browse")
     };
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
 
     return (
         <>
@@ -67,10 +102,11 @@ function ListingFormPage () {
                         <div className='image__input__container'>
                         <input
                             className='image__input'
-                            type='string'
+                            name='image'
+                            type='file'
                             placeholder="Image url"
-                            value={url}
-                            onChange={(e) => setUrl(e.target.value)}
+                            accept='image/*'
+                            onChange={updateImage}
                         />
                         </div>
                         <div className='description__input__container'>
@@ -94,6 +130,7 @@ function ListingFormPage () {
                             <button className="form-cancel">Cancel</button>
                         </Link>
                     </div>
+                    {(imageLoading) && <p>Loading...</p>}
                 </form>
             </div>
         </>

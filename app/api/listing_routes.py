@@ -2,6 +2,7 @@ from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Listing, User, Comment, db
+from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
 
 listing_routes = Blueprint('listings', __name__)
 
@@ -26,10 +27,31 @@ def get_one_listing(id):
 @listing_routes.route('/listing-form', methods=['POST'])
 @login_required
 def create_listing():
-    user_id = request.json['user_id']
-    title = request.json['title']
-    url = request.json['url']
-    description = request.json['description']
+    if "url" not in request.files:
+        print("HELLO ???", request.files['url'])
+        return {"errors": "image required"}, 400
+
+    # user_id = request.json['user_id']
+    # title = request.json['title']
+    image = request.files['url']
+    # description = request.json['description']
+
+    if not allowed_file(image.filename):
+        print("!!!!!!!!!!!!!!!!!!!")
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        print("@@@@@@@@@@@@@@@@@@@@@", upload)
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
 
     newListing = Listing(
         user_id=user_id,
