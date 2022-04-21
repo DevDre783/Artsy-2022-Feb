@@ -56,12 +56,13 @@ function ListingFormPage () {
 
         if (res.ok) {
             const newListing = await res.json();
-            dispatch(addNewListing(newListing))
+            await dispatch(addNewListing(newListing))
             history.push("/browse")
             setImageLoading(false);
         }
         else {
             setImageLoading(false);
+            console.log("HELLO ??!?!?!?!", res)
             // a real app would probably use more advanced
             // error handling
             console.log("error");
