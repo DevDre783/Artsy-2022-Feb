@@ -37,6 +37,8 @@ def create_listing():
     image = request.files['url']
     description = request.form['description']
 
+    # print("WOOOOOOOOOOOO", request.files())
+
     if not allowed_file(image.filename):
         print("!!!!!!!!!!!!!!!!!!!")
         return {"errors": "file type not permitted"}, 400

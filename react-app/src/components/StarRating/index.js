@@ -26,6 +26,7 @@ const StarRating = () => {
                     </label>
                 )
             })}
+                (coming soon...)
         </div>
     )
 }
