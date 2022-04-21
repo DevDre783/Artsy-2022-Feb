@@ -43,7 +43,7 @@ function ListingFormPage () {
         formData.append("url", image);
         formData.append("title", title);
         formData.append("description", description);
-        console.log("HIIIII", Object.fromEntries(formData))
+        // console.log("HIIIII", Object.fromEntries(formData))
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
@@ -56,13 +56,13 @@ function ListingFormPage () {
 
         if (res.ok) {
             const newListing = await res.json();
-            await dispatch(addNewListing(newListing))
-            history.push("/browse")
+            await dispatch(addNewListing(newListing));
+            history.push("/browse");
             setImageLoading(false);
         }
         else {
             setImageLoading(false);
-            console.log("HELLO ??!?!?!?!", res)
+            console.log("HELLO ??!?!?!?!", res);
             // a real app would probably use more advanced
             // error handling
             console.log("error");
