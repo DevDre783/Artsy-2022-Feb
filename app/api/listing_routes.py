@@ -28,7 +28,7 @@ def get_one_listing(id):
 @login_required
 def create_listing():
     if "url" not in request.files:
-        print("HELLO ???", request.files['url'])
+        # print("HELLO ???", request.files['url'])
         return {"errors": "image required"}, 400
 
     # print("--------------", request.form['user_id'])
@@ -40,7 +40,7 @@ def create_listing():
     # print("WOOOOOOOOOOOO", request.files())
 
     if not allowed_file(image.filename):
-        print("!!!!!!!!!!!!!!!!!!!")
+        # print("!!!!!!!!!!!!!!!!!!!")
         return {"errors": "file type not permitted"}, 400
 
     image.filename = get_unique_filename(image.filename)
@@ -48,7 +48,7 @@ def create_listing():
     upload = upload_file_to_s3(image)
 
     if "url" not in upload:
-        print("@@@@@@@@@@@@@@@@@@@@@", upload)
+        # print("@@@@@@@@@@@@@@@@@@@@@", upload)
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
