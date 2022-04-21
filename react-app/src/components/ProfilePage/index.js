@@ -93,12 +93,12 @@ function ProfileDisplay({ setShowModal }) {
                     </>
                 ))}
             </div>
-            <div className='lower__container'>
+            {/* <div className='lower__container'>
                 <footer className='footer__text'>
                     {showMore ? text : `${text.substring(0, 539)}`}
                     <button className='showMoreLessbtn' onClick={() => setShowMore(!showMore)}>{showMore ? "Show less" : "...Show more"}</button>
                 </footer>
-            </div>
+            </div> */}
         </div>
     )
 }
