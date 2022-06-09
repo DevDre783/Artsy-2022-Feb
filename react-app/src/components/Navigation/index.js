@@ -72,9 +72,9 @@ function Navbar({ isLoaded }) {
         <div className='profile__icon'>
          {!user ? null : <div className='share__tab'><NavLink to={`/listing-form`} style={{color: "red", marginRight: "50px"}}>Share!</NavLink></div>}
          {!user ? null :<ProfileButton />}
-        {!user ? null :<SearchBar />}
+        {!user ? null :<SearchBar style={{position: "relative"}} />}
         </div>
-        <FaShoppingCart style={{marginRight: "-8%"}}/>
+        <Link to="/cart"><FaShoppingCart className='cart_icon'/></Link>
     </nav>
   );
 }
