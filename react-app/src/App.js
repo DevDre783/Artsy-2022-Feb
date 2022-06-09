@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import BrowseListings from './components/BrowseListings'
 import ListingFormPage from './components/ListingFormPage';
 import ListingDetailsPage from './components/ListingDetailsPage'
+import ShoppingCart from './components/ShoppingCart';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
@@ -60,6 +61,9 @@ function App() {
         </ProtectedRoute> */}
         <ProtectedRoute path='/' exact={true}>
           <BrowseListings/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/cart' exact={true}>
+          <ShoppingCart />
         </ProtectedRoute>
         <Route>
           <h1 style={{marginTop: "18%", marginLeft: "38%", fontSize: "50pt"}}>404: Page Not Found</h1>
